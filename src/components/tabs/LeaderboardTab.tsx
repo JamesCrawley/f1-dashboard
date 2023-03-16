@@ -5,8 +5,8 @@ import {
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
+import { getOrdinal } from '../../scripts/utils';
 import { Player } from '../../types';
-import { getOrdinal } from '../../types/scripts/utils';
 import PlayerCard from '../player-card';
 
 type Top3Props = {

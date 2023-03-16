@@ -10,8 +10,8 @@ import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import App from './App';
 import { StoreContext } from './context/StoreContext';
 import { players, races } from './data';
+import { getPlayersWithPoints } from './scripts/utils';
 import theme from './theme';
-import { getPlayersWithPoints } from './types/scripts/utils';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
