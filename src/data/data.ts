@@ -429,10 +429,4 @@ export const players: Player[] = [
       },
     },
   },
-  {
-    id: 24,
-    name: "Ben R",
-    points: 0,
-    predictions: { 1: null },
-  },
 ];

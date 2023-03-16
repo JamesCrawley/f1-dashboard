@@ -1,84 +1,142 @@
 import { FC, useContext } from 'react';
 
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Divider, Flex,
-  Stack, Text
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, Heading,
+  Stack, Text, VStack
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
+import { splitRaces } from '../../scripts/utils';
+import { CompletedRace, Race } from '../../types';
 
-const RacesTab = () => {
-  const { races } = useContext(StoreContext);
+type RaceResultsProps = {
+  header?: string;
+  race: CompletedRace | Race;
+};
+const RaceResults: FC<RaceResultsProps> = ({ header, race }) => {
+  const p = { width: "fit-content", bgColor: "white", px: "8px" };
 
-  type AccordionFieldProps = { text: string; value: string };
-  const AccordionField: FC<AccordionFieldProps> = ({ text, value }) => {
+  type RaceResultFieldProps = { text?: string; value?: string };
+  const RaceResultField: FC<RaceResultFieldProps> = ({ text, value }) => {
     return (
-      <Box p="8px">
-        <Text fontSize="12px">{text}</Text>
-        <Text fontSize="20px">{value}</Text>
+      <Box p="8px" textAlign="center">
+        {text && (
+          <Text {...p} fontSize="14px">
+            <em>{text}</em>
+          </Text>
+        )}
+
+        <Text {...p} fontSize="24px">
+          {value ?? "-"}
+        </Text>
       </Box>
     );
   };
 
   return (
-    <Box>
+    <VStack p="8px" borderRadius="8px" color="black">
+      {header && (
+        <Heading {...p} fontSize="24px">
+          {header}
+        </Heading>
+      )}
+
+      <RaceResultField value={race.name} />
+
+      {race.result && (
+        <Flex w="100%" justifyContent="space-around" wrap="wrap">
+          <RaceResultField text="First" value={race.result.first} />
+
+          <RaceResultField text="Last" value={race.result.last} />
+
+          <RaceResultField text="Fastest Lap" value={race.result.fastestLap} />
+
+          <RaceResultField text="Pole" value={race.result.pole} />
+        </Flex>
+      )}
+    </VStack>
+  );
+};
+
+type RaceAccordionProps = {
+  races: Race[] | CompletedRace[];
+};
+const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
+  type AccordionHeaderProps = Pick<Race, "name">;
+  const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
+    return (
+      <AccordionButton py="8px">
+        <Text flex="1" textAlign="left">
+          {name}
+        </Text>
+
+        <AccordionIcon />
+      </AccordionButton>
+    );
+  };
+
+  return (
+    <Accordion allowToggle>
       {races.map((race) => {
         return (
-          <Accordion allowToggle>
-            <AccordionItem>
-              <AccordionButton py="8px">
-                <Text flex="1" textAlign="left">
-                  {race.name}
-                </Text>
+          <AccordionItem>
+            <AccordionHeader name={race.name} />
 
-                <AccordionIcon />
-              </AccordionButton>
-
-              <AccordionPanel
-                textAlign="left"
-                pb="8px"
-                bgColor="blackAlpha.200"
-              >
-                <Stack>
-                  <AccordionField text="Country" value={race.country} />
-
-                  <Divider />
-
-                  <AccordionField text="Name" value={race.name} />
-
-                  {race.result && (
-                    <>
-                      <Divider />
-                      <Flex justifyContent="space-between" wrap="wrap">
-                        <AccordionField
-                          text="First"
-                          value={race.result.first}
-                        />
-
-                        <Divider orientation="vertical" />
-
-                        <AccordionField text="Last" value={race.result.last} />
-
-                        <Divider orientation="vertical" />
-
-                        <AccordionField
-                          text="Fastest Lap"
-                          value={race.result.fastestLap}
-                        />
-
-                        <Divider orientation="vertical" />
-
-                        <AccordionField text="Pole" value={race.result.pole} />
-                      </Flex>
-                    </>
-                  )}
-                </Stack>
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
+            <AccordionPanel textAlign="left" pb="8px" bgColor="blackAlpha.200">
+              <RaceResults race={race} />
+            </AccordionPanel>
+          </AccordionItem>
         );
       })}
-    </Box>
+    </Accordion>
+  );
+};
+
+const RacesTab = () => {
+  const { races } = useContext(StoreContext);
+
+  const { completedRaces, upcomingRaces } = splitRaces(races);
+
+  const previousRace = completedRaces.pop();
+  const nextRace = upcomingRaces.shift();
+
+  return (
+    <Stack gap="16px">
+      {completedRaces.length > 0 && (
+        <Box>
+          <Heading fontSize="24px" mb="8px">
+            Completed Races
+          </Heading>
+          <RaceAccordion races={completedRaces} />
+        </Box>
+      )}
+
+      {previousRace && (
+        <Box
+          py="16px"
+          borderRadius="8px"
+          bg="repeating-conic-gradient(lightgrey 0% 25%, transparent 0% 50%) 50% / 20px 20px"
+          bgPosition="top"
+        >
+          <RaceResults header="Previous Race" race={previousRace} />
+        </Box>
+      )}
+
+      {nextRace && (
+        <Box bgColor="blackAlpha.300" py="16px" borderRadius="8px">
+          <RaceResults header="Next Race" race={nextRace} />
+        </Box>
+      )}
+
+      {upcomingRaces.length > 0 && (
+        <Box py="16px" borderRadius="8px">
+          <Heading fontSize="24px" mb="8px">
+            Upcoming Races
+          </Heading>
+          <RaceAccordion races={upcomingRaces} />
+        </Box>
+      )}
+    </Stack>
   );
 };
 
