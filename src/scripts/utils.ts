@@ -1,15 +1,8 @@
 import { CompletedRace, Player, Predictions, Race } from '../types';
 
+// TODO: Rename this
 export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
-  const completedRaces: CompletedRace[] = [];
-
-  r.some((race) => {
-    if (race.result) {
-      completedRaces.push(race as CompletedRace);
-    } else {
-      return true;
-    }
-  });
+  const { completedRaces } = splitRaces(r);
 
   const players = [...p].map((player) => {
     let points = 0;
@@ -51,6 +44,25 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
   });
 
   return { players };
+};
+
+type SplitRaces = {
+  completedRaces: CompletedRace[];
+  upcomingRaces: Race[];
+};
+export const splitRaces = (races: Race[]): SplitRaces => {
+  const completedRaces: CompletedRace[] = [];
+  const upcomingRaces: Race[] = [];
+
+  races.forEach((race) => {
+    if (race.result) {
+      completedRaces.push(race as CompletedRace);
+    } else {
+      upcomingRaces.push(race);
+    }
+  });
+
+  return { completedRaces, upcomingRaces };
 };
 
 export const getOrdinal = (n: number) => {

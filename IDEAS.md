@@ -1,0 +1,3 @@
+- new tab for teams showing stats
+- new tab for drivers showing stats
+- new tab (or modal) showing stats (graphs) for each round

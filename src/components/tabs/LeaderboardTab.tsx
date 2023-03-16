@@ -75,13 +75,7 @@ const LeaderboardTab = () => {
 
   return (
     <Box>
-      <Text
-        fontSize="16px"
-        letterSpacing="4px"
-        fontWeight="light"
-        textAlign="left"
-        mb="16px"
-      >
+      <Text fontSize="16px" fontWeight="light" textAlign="left" mb="16px">
         RACES COMPLETED {racesCompleted} / {races.length}
       </Text>
 
