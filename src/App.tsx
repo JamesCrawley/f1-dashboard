@@ -8,7 +8,7 @@ const App = () => (
     <SimpleGrid maxW="1000px" mx="auto" gridTemplateColumns="1fr auto" p="16px">
       <Box textAlign="center" w="auto">
         <Flex justifyContent="space-between" alignItems="center" mt="16px">
-          <Heading fontSize="40px">F1 Predictor TEST</Heading>
+          <Heading fontSize="40px">F1 Predictor</Heading>
 
           <ColorModeSwitcher />
         </Flex>
