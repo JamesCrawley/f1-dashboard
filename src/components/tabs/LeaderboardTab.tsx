@@ -86,9 +86,15 @@ const LeaderboardTab = () => {
         <Table variant="striped">
           <Thead>
             <Tr>
-              <Th w="0px">#</Th>
-              <Th>Name</Th>
-              <Th w="0px">Points</Th>
+              <Th w="0px">
+                <Text>#</Text>
+              </Th>
+              <Th>
+                <Text>Name</Text>
+              </Th>
+              <Th w="0px">
+                <Text>Points</Text>
+              </Th>
             </Tr>
           </Thead>
 

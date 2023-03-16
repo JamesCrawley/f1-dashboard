@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, Heading,
-  LightMode, Stack, Text, VStack
+  Stack, Text, VStack
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
