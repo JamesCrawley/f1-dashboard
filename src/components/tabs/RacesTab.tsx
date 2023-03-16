@@ -19,7 +19,7 @@ const RaceResults: FC<RaceResultsProps> = ({ header, race }) => {
   type RaceResultFieldProps = { text?: string; value?: string };
   const RaceResultField: FC<RaceResultFieldProps> = ({ text, value }) => {
     return (
-      <Box p="8px">
+      <Box p="8px" textAlign="center">
         {text && (
           <Text {...p} fontSize="14px">
             <em>{text}</em>
