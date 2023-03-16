@@ -79,7 +79,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
     <Accordion allowToggle>
       {races.map((race) => {
         return (
-          <AccordionItem>
+          <AccordionItem key={race.id}>
             <AccordionHeader name={race.name} />
 
             <AccordionPanel textAlign="left" pb="8px" bgColor="blackAlpha.200">
@@ -107,6 +107,7 @@ const RacesTab = () => {
           <Heading fontSize="24px" mb="8px">
             Completed Races
           </Heading>
+
           <RaceAccordion races={completedRaces} />
         </Box>
       )}

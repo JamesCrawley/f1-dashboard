@@ -4,6 +4,7 @@ import './fonts/Mulish-Italic.ttf';
 import './fonts/Mulish-BoldItalic.ttf';
 
 import * as ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 
@@ -22,8 +23,10 @@ const { players: p } = getPlayersWithPoints(players, races);
 root.render(
   <ChakraProvider theme={theme}>
     <StoreContext.Provider value={{ players: p, races }}>
-      <ColorModeScript />
-      <App />
+      <BrowserRouter>
+        <ColorModeScript />
+        <App />
+      </BrowserRouter>
     </StoreContext.Provider>
   </ChakraProvider>
 );
