@@ -9,21 +9,20 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
   return (
     <Stack
       justifyContent="center"
-      w="160px"
-      h="160px"
-      bgColor="blackAlpha.200"
+      w="240px"
+      h="240px"
       borderRadius="16px"
       p="16px"
+      gap="8px"
       {...props}
     >
-      <Box>
-        <Text>{player.name}</Text>
+      <Text fontSize="20px">{player.name}</Text>
 
-        <Text fontSize="60px" lineHeight="60px" fontWeight="bold">
-          {player.points}
-        </Text>
-        <Text fontSize="12px">Points</Text>
-      </Box>
+      <Text fontSize="80px" lineHeight="60px" fontWeight="bold">
+        {player.points}
+      </Text>
+
+      <Text fontSize="16px">Points</Text>
     </Stack>
   );
 };

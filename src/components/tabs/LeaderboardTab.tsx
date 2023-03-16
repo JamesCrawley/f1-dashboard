@@ -23,10 +23,12 @@ const Top3: FC<Top3Props> = ({ players }) => {
   const Podium: FC<PodiumProps> = ({ position, bgColor }) => {
     return (
       <Stack
+        id={`podium-${position}`}
         justifyContent="space-around"
         bgColor={bgColor}
-        w="80%"
-        h={`${120 - position * 20}px`}
+        w="100%"
+        h={`${160 - position * 20}px`}
+        _hover={{ filter: "contrast(150%)" }}
         borderTopLeftRadius="8px"
         borderTopRightRadius="8px"
       >
