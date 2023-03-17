@@ -11,3 +11,5 @@ app.use("/api", apiRoutes);
 app.listen(8080, () => {
   console.log("Server started on port 8080");
 });
+
+module.exports = app;
