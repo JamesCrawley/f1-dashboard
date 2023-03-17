@@ -5,7 +5,7 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "scripts": {
-    "vercel-dev": "vercel dev",
+    "develop": "vercel dev",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
