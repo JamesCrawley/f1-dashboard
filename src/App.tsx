@@ -1,24 +1,11 @@
 import './App.css';
 
-import { Box, Button, Flex, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Flex, Heading, SimpleGrid } from '@chakra-ui/react';
 
-import { get, post } from './api';
 import ColorModeSwitcher from './components/color-mode-switcher';
 import Tabs from './components/tabs';
 
 const App = () => {
-  const getData = async () => {
-    try {
-      const response = await post("/test", { test: true });
-
-      const data = await response.json();
-
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   return (
     <Box textAlign="center" minH="100vh" fontSize="xl">
       <SimpleGrid
@@ -35,8 +22,6 @@ const App = () => {
 
             <ColorModeSwitcher />
           </Flex>
-
-          <Button onClick={getData}>CLICK ME</Button>
 
           <Tabs />
         </Box>

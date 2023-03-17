@@ -1,0 +1,1 @@
+- Add a .ts file for every serverless function, file name maps to the api route
