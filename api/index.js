@@ -1,11 +1,16 @@
 const express = require("express");
 const app = express();
-const apiRoutes = require("./router");
+const apiRoutes = require("./routes");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
-app.get("/ping", (req, res) => {
-  return res.json("pong");
-});
-
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+app.use(cors());
 app.use("/api", apiRoutes);
 
 app.listen(8080, () => {

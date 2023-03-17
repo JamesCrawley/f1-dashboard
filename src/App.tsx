@@ -2,17 +2,18 @@ import './App.css';
 
 import { Box, Button, Flex, Heading, SimpleGrid } from '@chakra-ui/react';
 
+import { get, post } from './api';
 import ColorModeSwitcher from './components/color-mode-switcher';
 import Tabs from './components/tabs';
 
 const App = () => {
   const getData = async () => {
     try {
-      const response = await fetch("/api/ping", {
-        method: "GET",
-      });
+      const response = await post("/test", { test: true });
 
-      console.log(await response.json());
+      const data = await response.json();
+
+      console.log(data);
     } catch (e) {
       console.error(e);
     }
