@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs as ChakraTabs, Text } from '@chakra-ui/react';
@@ -22,12 +22,17 @@ const Tabs = () => {
     },
   ];
 
+  useEffect(() => {
+    if (window.location.pathname === "/") navigate(tabs[0].path);
+  }, []);
+
   const [selectedTab, changeSelectedTab] = useState<number>(
     tabs.findIndex(({ path }) => path === window.location.pathname)
   );
 
   const onTabChange = (index: number) => {
     navigate(tabs[index].path);
+
     changeSelectedTab(index);
   };
 
