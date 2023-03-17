@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon ./api/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
