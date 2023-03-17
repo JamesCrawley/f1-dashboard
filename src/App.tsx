@@ -8,12 +8,11 @@ import Tabs from './components/tabs';
 const App = () => {
   const getData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/ping", {
+      const response = await fetch("/api/ping", {
         method: "GET",
-        mode: "no-cors",
       });
 
-      console.log(response);
+      console.log(await response.json());
     } catch (e) {
       console.error(e);
     }

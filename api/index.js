@@ -3,7 +3,7 @@ const app = express();
 const apiRoutes = require("./router");
 
 app.get("/ping", (req, res) => {
-  return res.send("pong");
+  return res.json("pong");
 });
 
 app.use("/api", apiRoutes);
