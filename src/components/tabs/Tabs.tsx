@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import { Tab, TabList, TabPanel, TabPanels, Tabs as ChakraTabs, Text } from '@chakra-ui/react';
+import { Box, Tab, TabList, TabPanel, TabPanels, Tabs as ChakraTabs, Text } from '@chakra-ui/react';
 
 import LeaderboardTab from './LeaderboardTab';
 import RacesTab from './RacesTab';
@@ -9,46 +9,48 @@ import RacesTab from './RacesTab';
 const Tabs = () => {
   const navigate = useNavigate();
 
-  const tabMap: { [pathname: string]: number } = {
-    "/leaderboard": 0,
-    "/races": 1,
-  };
+  const tabs = [
+    {
+      text: "Leaderboard",
+      path: "/leaderboard",
+      route: <Route path="/leaderboard" element={<LeaderboardTab />} />,
+    },
+    {
+      text: "Races",
+      path: "/races",
+      route: <Route path="/races" element={<RacesTab />} />,
+    },
+  ];
 
   const [selectedTab, changeSelectedTab] = useState<number>(
-    tabMap[window.location.pathname] ?? 0
+    tabs.findIndex(({ path }) => path === window.location.pathname)
   );
 
   const onTabChange = (index: number) => {
-    const defaultRoute = "/leaderboard"; // fallback
-
-    navigate(
-      Object.entries(tabMap).find(([pathname, i]) => i === index)?.[0] ??
-        defaultRoute
-    );
+    navigate(tabs[index].path);
     changeSelectedTab(index);
   };
 
   return (
-    <ChakraTabs index={selectedTab} onChange={onTabChange}>
-      <TabList>
-        <Tab>
-          <Text>Leaderboard</Text>
-        </Tab>
-        <Tab>
-          <Text>Races</Text>
-        </Tab>
-      </TabList>
+    <Box>
+      <ChakraTabs variant="enclosed" index={selectedTab} onChange={onTabChange}>
+        <TabList>
+          {tabs.map(({ text }, key) => (
+            <Tab key={key}>
+              <Text>{text}</Text>
+            </Tab>
+          ))}
+        </TabList>
+      </ChakraTabs>
 
-      <TabPanels maxW="1000px" pt="16px">
-        <TabPanel>
-          <LeaderboardTab />
-        </TabPanel>
-
-        <TabPanel>
-          <RacesTab />
-        </TabPanel>
-      </TabPanels>
-    </ChakraTabs>
+      <Box maxW="1000px" pt="16px">
+        <Routes>
+          {tabs.map(({ route }, key) => (
+            <React.Fragment key={key}>{route}</React.Fragment>
+          ))}
+        </Routes>
+      </Box>
+    </Box>
   );
 };
 
