@@ -1,8 +1,8 @@
 import { FC, useContext } from 'react';
 
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, Heading,
-  Stack, Text, VStack
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Divider, Flex,
+  Heading, Stack, Text, VStack
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
@@ -10,23 +10,32 @@ import { splitRaces } from '../../scripts/utils';
 import { CompletedRace, Race } from '../../types';
 
 type RaceResultsProps = {
-  header?: string;
   race: CompletedRace | Race;
 };
-const RaceResults: FC<RaceResultsProps> = ({ header, race }) => {
-  const p = { width: "fit-content", bgColor: "white", px: "8px" };
-
-  type RaceResultFieldProps = { text?: string; value?: string };
-  const RaceResultField: FC<RaceResultFieldProps> = ({ text, value }) => {
+const RaceResults: FC<RaceResultsProps> = ({ race }) => {
+  type RaceResultFieldProps = { text: string; emoji: string; value?: string };
+  const RaceResultField: FC<RaceResultFieldProps> = ({
+    text,
+    emoji,
+    value,
+  }) => {
     return (
       <Box p="8px" textAlign="center">
         {text && (
-          <Text {...p} fontSize="14px">
-            <em>{text}</em>
-          </Text>
+          <Flex>
+            <Text fontSize="14px">
+              <em>{text}</em>
+            </Text>
+
+            {emoji && (
+              <Text fontSize="18px" ml="8px">
+                {emoji}
+              </Text>
+            )}
+          </Flex>
         )}
 
-        <Text {...p} fontSize="24px">
+        <Text fontSize="24px" fontWeight="bold">
           {value ?? "-"}
         </Text>
       </Box>
@@ -35,25 +44,23 @@ const RaceResults: FC<RaceResultsProps> = ({ header, race }) => {
 
   return (
     <VStack p="8px" borderRadius="8px" color="black">
-      {header && (
-        <Heading {...p} fontSize="24px">
-          {header}
-        </Heading>
-      )}
+      {/* <Heading fontSize="24px" mb="16px">
+        {race.name}
+      </Heading> */}
 
-      <RaceResultField value={race.name} />
+      <Flex w="100%" justifyContent="space-around" wrap="wrap">
+        <RaceResultField text="First" emoji="🏆" value={race.result?.first} />
 
-      {race.result && (
-        <Flex w="100%" justifyContent="space-around" wrap="wrap">
-          <RaceResultField text="First" value={race.result.first} />
+        <RaceResultField text="Last" emoji="👎" value={race.result?.last} />
 
-          <RaceResultField text="Last" value={race.result.last} />
+        <RaceResultField
+          text="Fastest Lap"
+          emoji="⚡"
+          value={race.result?.fastestLap}
+        />
 
-          <RaceResultField text="Fastest Lap" value={race.result.fastestLap} />
-
-          <RaceResultField text="Pole" value={race.result.pole} />
-        </Flex>
-      )}
+        <RaceResultField text="Pole" emoji="🏅" value={race.result?.pole} />
+      </Flex>
     </VStack>
   );
 };
@@ -82,7 +89,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
           <AccordionItem key={race.id}>
             <AccordionHeader name={race.name} />
 
-            <AccordionPanel textAlign="left" pb="8px" bgColor="blackAlpha.200">
+            <AccordionPanel textAlign="left" pb="8px">
               <RaceResults race={race} />
             </AccordionPanel>
           </AccordionItem>
@@ -97,43 +104,38 @@ const RacesTab = () => {
 
   const { completedRaces, upcomingRaces } = splitRaces(races);
 
-  const previousRace = completedRaces.pop();
-  const nextRace = upcomingRaces.shift();
+  const currentRace = upcomingRaces[0].result?.pole
+    ? upcomingRaces.shift()
+    : null;
 
   return (
     <Stack gap="16px">
+      {currentRace && (
+        <Box bgColor="green.200" py="16px" borderRadius="8px">
+          <Heading fontSize="32px" mb="8px">
+            🏎️ {currentRace.name} 🏎️
+          </Heading>
+
+          <RaceResults race={currentRace} />
+        </Box>
+      )}
+
       {completedRaces.length > 0 && (
         <Box>
           <Heading fontSize="24px" mb="8px">
-            Completed Races
+            Completed Races 🏁
           </Heading>
 
           <RaceAccordion races={completedRaces} />
         </Box>
       )}
 
-      {previousRace && (
-        <Box
-          py="16px"
-          borderRadius="8px"
-          bg="repeating-conic-gradient(lightgrey 0% 25%, transparent 0% 50%) 50% / 20px 20px"
-          bgPosition="top"
-        >
-          <RaceResults header="Previous Race" race={previousRace} />
-        </Box>
-      )}
-
-      {nextRace && (
-        <Box bgColor="blackAlpha.300" py="16px" borderRadius="8px">
-          <RaceResults header="Next Race" race={nextRace} />
-        </Box>
-      )}
-
       {upcomingRaces.length > 0 && (
-        <Box py="16px" borderRadius="8px">
+        <Box borderRadius="8px">
           <Heading fontSize="24px" mb="8px">
-            Upcoming Races
+            Upcoming Races ⏭️
           </Heading>
+
           <RaceAccordion races={upcomingRaces} />
         </Box>
       )}

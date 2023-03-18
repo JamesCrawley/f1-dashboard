@@ -16,6 +16,9 @@ export const races: Race[] = [
     id: 2,
     name: "FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2023",
     country: "Saudi Arabia",
+    result: {
+      pole: "Sergio Perez",
+    },
   },
   {
     id: 3,

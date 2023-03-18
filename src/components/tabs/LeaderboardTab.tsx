@@ -66,7 +66,7 @@ const LeaderboardTab = () => {
   const { races, players } = useContext(StoreContext);
 
   const racesCompleted = races
-    .map(({ result }): number => (result ? 1 : 0))
+    .map(({ result }): number => (result?.first ? 1 : 0))
     .reduce((a, b) => a + b);
 
   const sortedPlayers = [...players];
@@ -78,7 +78,7 @@ const LeaderboardTab = () => {
   return (
     <Box>
       <Text fontSize="16px" fontWeight="light" textAlign="left" mb="16px">
-        RACES COMPLETED {racesCompleted} / {races.length}
+        Races Completed {racesCompleted} / {races.length}
       </Text>
 
       <Top3 players={top3Players} />

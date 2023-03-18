@@ -71,10 +71,10 @@ export type Player = {
 };
 
 type Result = {
-  first: Driver;
-  last: Driver;
   pole: Driver;
-  fastestLap: Driver;
+  first?: Driver;
+  last?: Driver;
+  fastestLap?: Driver;
 };
 
 export type Predictions = { [key: string]: Result | null };

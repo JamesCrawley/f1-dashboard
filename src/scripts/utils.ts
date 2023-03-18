@@ -55,7 +55,7 @@ export const splitRaces = (races: Race[]): SplitRaces => {
   const upcomingRaces: Race[] = [];
 
   races.forEach((race) => {
-    if (race.result) {
+    if (race.result?.first) {
       completedRaces.push(race as CompletedRace);
     } else {
       upcomingRaces.push(race);
