@@ -1,8 +1,8 @@
 import { FC, useContext } from 'react';
 
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Divider, Flex,
-  Heading, Stack, Text, VStack
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, Heading,
+  Stack, Text, VStack
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
@@ -67,8 +67,9 @@ const RaceResults: FC<RaceResultsProps> = ({ race }) => {
 
 type RaceAccordionProps = {
   races: Race[] | CompletedRace[];
+  defaultIndex?: number;
 };
-const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
+const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
   type AccordionHeaderProps = Pick<Race, "name">;
   const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
     return (
@@ -83,7 +84,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
   };
 
   return (
-    <Accordion allowToggle>
+    <Accordion allowToggle allowMultiple defaultIndex={defaultIndex}>
       {races.map((race) => {
         return (
           <AccordionItem key={race.id}>
@@ -126,7 +127,10 @@ const RacesTab = () => {
             Completed Races 🏁
           </Heading>
 
-          <RaceAccordion races={completedRaces} />
+          <RaceAccordion
+            races={completedRaces}
+            defaultIndex={currentRace ? undefined : completedRaces.length - 1}
+          />
         </Box>
       )}
 
