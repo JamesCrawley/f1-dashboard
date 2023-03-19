@@ -21,7 +21,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
         py={{ base: "16px", lg: "8px" }}
         _expanded={{ fontWeight: "bold" }}
       >
-        <Text flex="1" fontSize={{ base: "36px", lg: "24px" }} textAlign="left">
+        <Text flex="1" fontSize={{ base: "36px", lg: "16px" }} textAlign="left">
           {name}
         </Text>
 
@@ -60,8 +60,8 @@ const RacesTab = () => {
   const Title: FC<{ children: any }> = ({ children }) => {
     return (
       <Text
-        fontSize={{ base: "48px", lg: "32px" }}
-        my={{ base: "40px", lg: "32px" }}
+        fontSize={{ base: "48px", lg: "24px" }}
+        my={{ base: "40px", lg: "24px" }}
       >
         {children}
       </Text>
