@@ -1,7 +1,4 @@
-import './fonts/Mulish-Regular.ttf';
-import './fonts/Mulish-Bold.ttf';
-import './fonts/Mulish-Italic.ttf';
-import './fonts/Mulish-BoldItalic.ttf';
+import '@fontsource/mulish';
 
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

@@ -5,6 +5,11 @@ const config: ThemeConfig = {
   useSystemColorMode: true,
 };
 
-const theme = extendTheme({ config });
+const fonts = {
+  heading: "Mulish",
+  body: "Mulish",
+};
+
+const theme = extendTheme({ config, fonts });
 
 export default theme;
