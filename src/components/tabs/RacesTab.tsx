@@ -143,7 +143,7 @@ const RacesTab = () => {
 
       {upcomingRaces.length > 0 && (
         <Box borderRadius="8px">
-          <Title>Upcoming Races ⏭️</Title>
+          <Title>Upcoming Races 🔜</Title>
 
           <RaceAccordion races={upcomingRaces} />
         </Box>
