@@ -1,51 +1,11 @@
-import { FC, useContext } from 'react';
+import { FC, PropsWithChildren, useContext } from 'react';
 
-import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Stack, Text
-} from '@chakra-ui/react';
+import { Box, Stack, Text } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
 import { splitRaces } from '../../scripts/utils';
-import { CompletedRace, Race } from '../../types';
+import RaceAccordion from '../race-accordion';
 import RaceResults from '../race-results';
-
-type RaceAccordionProps = {
-  races: Race[] | CompletedRace[];
-  defaultIndex?: number;
-};
-const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
-  type AccordionHeaderProps = Pick<Race, "name">;
-  const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
-    return (
-      <AccordionButton
-        py={{ base: "16px", lg: "8px" }}
-        _expanded={{ fontWeight: "bold" }}
-      >
-        <Text flex="1" fontSize={{ base: "36px", lg: "16px" }} textAlign="left">
-          {name}
-        </Text>
-
-        <AccordionIcon />
-      </AccordionButton>
-    );
-  };
-
-  return (
-    <Accordion allowToggle allowMultiple defaultIndex={defaultIndex}>
-      {races.map((race) => {
-        return (
-          <AccordionItem key={race.id}>
-            <AccordionHeader name={`${race.country} - ${race.trackName}`} />
-
-            <AccordionPanel textAlign="left" pb="8px">
-              <RaceResults race={race} />
-            </AccordionPanel>
-          </AccordionItem>
-        );
-      })}
-    </Accordion>
-  );
-};
 
 const RacesTab = () => {
   const { races } = useContext(StoreContext);
@@ -56,8 +16,7 @@ const RacesTab = () => {
     ? upcomingRaces.shift()
     : null;
 
-  // TODO: fix this
-  const Title: FC<{ children: any }> = ({ children }) => {
+  const Title: FC<PropsWithChildren> = ({ children }) => {
     return (
       <Text
         fontSize={{ base: "48px", lg: "24px" }}
