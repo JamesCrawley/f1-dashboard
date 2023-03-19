@@ -1,6 +1,8 @@
 import { FC } from 'react';
 
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Text } from '@chakra-ui/react';
+import {
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Text
+} from '@chakra-ui/react';
 
 import { CompletedRace, Race } from '../../types';
 import RaceResults from '../race-results';
@@ -21,7 +23,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
           {name}
         </Text>
 
-        <AccordionItem />
+        <AccordionIcon />
       </AccordionButton>
     );
   };
