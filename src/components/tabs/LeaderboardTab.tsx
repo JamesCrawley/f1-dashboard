@@ -70,17 +70,17 @@ const LeaderboardTab = () => {
 
       <Divider />
       <TableContainer>
-        <Table variant="striped" size="lg">
+        <Table variant="striped" size={{ base: "lg", lg: "md" }}>
           <Thead>
             <Tr>
               <Th w="0px">
-                <Text fontSize={{ base: "32px", lg: "24px" }}>#</Text>
+                <Text fontSize={{ base: "32px", lg: "16px" }}>#</Text>
               </Th>
               <Th>
-                <Text fontSize={{ base: "32px", lg: "24px" }}>Name</Text>
+                <Text fontSize={{ base: "32px", lg: "16px" }}>Name</Text>
               </Th>
               <Th w="0px">
-                <Text fontSize={{ base: "32px", lg: "24px" }}>Points</Text>
+                <Text fontSize={{ base: "32px", lg: "16px" }}>Points</Text>
               </Th>
             </Tr>
           </Thead>
@@ -90,20 +90,20 @@ const LeaderboardTab = () => {
               return (
                 <Tr key={player.id}>
                   <Td>
-                    <Text fontSize={{ base: "40px", lg: "24px" }}>
+                    <Text fontSize={{ base: "40px", lg: "16px" }}>
                       {i + 4}
                       {getOrdinal(i + 4)}
                     </Text>
                   </Td>
                   <Td>
-                    <Text fontSize={{ base: "40px", lg: "24px" }}>
+                    <Text fontSize={{ base: "40px", lg: "16px" }}>
                       {player.name}
                     </Text>
                   </Td>
                   <Td>
                     <Text
                       textAlign="end"
-                      fontSize={{ base: "40px", lg: "24px" }}
+                      fontSize={{ base: "40px", lg: "16px" }}
                     >
                       {player.points}
                     </Text>

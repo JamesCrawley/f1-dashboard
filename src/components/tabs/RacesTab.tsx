@@ -69,7 +69,7 @@ const RacesTab = () => {
   };
 
   return (
-    <Stack>
+    <Stack textAlign="center">
       {currentRace && (
         <Box bgColor="green.200" py="16px" borderRadius="8px">
           <Title>

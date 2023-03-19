@@ -1,31 +1,30 @@
 import './App.css';
 
-import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 
 import ColorModeSwitcher from './components/color-mode-switcher';
 import Tabs from './components/tabs';
 
 const App = () => {
   return (
-    <Box textAlign="center" minH="100vh" fontSize="xl">
-      <SimpleGrid
-        maxW="1000px"
-        mx="auto"
-        gridTemplateColumns="1fr auto"
-        p="16px"
-      >
-        <Box textAlign="center" w="auto">
-          <Flex justifyContent="space-between" alignItems="center" my="16px">
-            <Text fontSize={{ base: "80px", lg: "40px" }} mb="16px">
-              F1 Predictor
-            </Text>
+    <Box maxW="1000px" mx="auto" p="16px">
+      <Flex textAlign="center" w="auto" pos="relative" mb="16px">
+        <Text fontSize={{ base: "80px", lg: "40px" }} w="100%">
+          F1 Predictor
+        </Text>
 
-            <ColorModeSwitcher />
-          </Flex>
+        <VStack
+          justifyContent="center"
+          h="100%"
+          pos="absolute"
+          top={0}
+          right={0}
+        >
+          <ColorModeSwitcher />
+        </VStack>
+      </Flex>
 
-          <Tabs />
-        </Box>
-      </SimpleGrid>
+      <Tabs />
     </Box>
   );
 };

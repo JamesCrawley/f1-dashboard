@@ -9,6 +9,7 @@ const Podium: FC<PodiumProps> = ({ position, bgColor }) => {
   return (
     <Stack
       justifyContent="space-around"
+      textAlign="center"
       bgColor={bgColor}
       w="100%"
       h={`${160 - position * 30}px`}
@@ -16,11 +17,7 @@ const Podium: FC<PodiumProps> = ({ position, bgColor }) => {
       borderTopLeftRadius="8px"
       borderTopRightRadius="8px"
     >
-      <Text
-
-        color="white"
-        fontSize={{ base: "42px", lg: "28px" }}
-      >
+      <Text color="white" fontSize={{ base: "42px", lg: "28px" }}>
         {position}
         {getOrdinal(position)}
       </Text>

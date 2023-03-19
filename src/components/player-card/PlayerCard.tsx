@@ -9,6 +9,7 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
   return (
     <Stack
       justifyContent="center"
+      textAlign="center"
       w="200px"
       borderRadius="16px"
       p="16px"
