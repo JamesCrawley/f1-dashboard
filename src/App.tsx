@@ -16,7 +16,7 @@ const App = () => {
       >
         <Box textAlign="center" w="auto">
           <Flex justifyContent="space-between" alignItems="center" mt="16px">
-            <Heading fontSize="40px" mb="16px">
+            <Heading fontSize={{ base: "64px", lg: "40px" }} mb="16px">
               F1 Predictor
             </Heading>
 

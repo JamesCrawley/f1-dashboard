@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, Heading,
-  Stack, Text, VStack
+  SimpleGrid, Stack, Text, VStack
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
@@ -20,35 +20,33 @@ const RaceResults: FC<RaceResultsProps> = ({ race }) => {
     value,
   }) => {
     return (
-      <Box p="8px" textAlign="center">
+      <Box p="8px">
         {text && (
-          <Flex>
-            <Text fontSize="14px">
-              <em>{text}</em>
-            </Text>
+          <Flex justifyContent="center">
+            <Text fontSize={{ base: "36px", lg: "14px" }}>{text}</Text>
 
-            {emoji && (
-              <Text fontSize="18px" ml="8px">
-                {emoji}
-              </Text>
-            )}
+            <Text fontSize={{ base: "42px", lg: "18px" }} ml="8px">
+              {emoji}
+            </Text>
           </Flex>
         )}
 
-        <Text fontSize="24px" fontWeight="bold">
-          {value ?? "-"}
-        </Text>
+        <em>
+          <Text
+            fontSize={{ base: "48px", lg: "24px" }}
+            textAlign="center"
+            // fontWeight="bold"
+          >
+            {value ?? "-"}
+          </Text>
+        </em>
       </Box>
     );
   };
 
   return (
-    <VStack p="8px" borderRadius="8px" color="black">
-      {/* <Heading fontSize="24px" mb="16px">
-        {race.name}
-      </Heading> */}
-
-      <Flex w="100%" justifyContent="space-around" wrap="wrap">
+    <VStack p="8px" borderRadius="8px">
+      <SimpleGrid templateColumns="1fr 1fr" gap="16px" w="100%">
         <RaceResultField text="First" emoji="🏆" value={race.result?.first} />
 
         <RaceResultField text="Last" emoji="👎" value={race.result?.last} />
@@ -60,7 +58,7 @@ const RaceResults: FC<RaceResultsProps> = ({ race }) => {
         />
 
         <RaceResultField text="Pole" emoji="🏅" value={race.result?.pole} />
-      </Flex>
+      </SimpleGrid>
     </VStack>
   );
 };
@@ -73,8 +71,11 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
   type AccordionHeaderProps = Pick<Race, "name">;
   const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
     return (
-      <AccordionButton py="8px">
-        <Text flex="1" textAlign="left">
+      <AccordionButton
+        py={{ base: "32px", lg: "8px" }}
+        _expanded={{ fontWeight: "bold" }}
+      >
+        <Text flex="1" fontSize={{ base: "48px", lg: "24px" }} textAlign="left">
           {name}
         </Text>
 
@@ -88,7 +89,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
       {races.map((race) => {
         return (
           <AccordionItem key={race.id}>
-            <AccordionHeader name={race.name} />
+            <AccordionHeader name={`${race.country} - ${race.trackName}`} />
 
             <AccordionPanel textAlign="left" pb="8px">
               <RaceResults race={race} />
@@ -109,13 +110,25 @@ const RacesTab = () => {
     ? upcomingRaces.shift()
     : null;
 
+  // TODO: fix this
+  const Title: FC<{ children: any }> = ({ children }) => {
+    return (
+      <Heading
+        fontSize={{ base: "64px", lg: "32px" }}
+        my={{ base: "64px", lg: "32px" }}
+      >
+        {children}
+      </Heading>
+    );
+  };
+
   return (
-    <Stack gap="16px">
+    <Stack>
       {currentRace && (
         <Box bgColor="green.200" py="16px" borderRadius="8px">
-          <Heading fontSize="32px" mb="8px">
-            🏎️ {currentRace.name} 🏎️
-          </Heading>
+          <Title>
+            🏎️ {`${currentRace.country} - ${currentRace.trackName}`} 🏎️
+          </Title>
 
           <RaceResults race={currentRace} />
         </Box>
@@ -123,9 +136,7 @@ const RacesTab = () => {
 
       {completedRaces.length > 0 && (
         <Box>
-          <Heading fontSize="24px" mb="8px">
-            Completed Races 🏁
-          </Heading>
+          <Title>Completed Races 🏁</Title>
 
           <RaceAccordion
             races={completedRaces}
@@ -136,9 +147,7 @@ const RacesTab = () => {
 
       {upcomingRaces.length > 0 && (
         <Box borderRadius="8px">
-          <Heading fontSize="24px" mb="8px">
-            Upcoming Races ⏭️
-          </Heading>
+          <Title>Upcoming Races ⏭️</Title>
 
           <RaceAccordion races={upcomingRaces} />
         </Box>

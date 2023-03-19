@@ -42,7 +42,7 @@ const Tabs = () => {
         <TabList>
           {tabs.map(({ text }, key) => (
             <Tab key={key}>
-              <Text>{text}</Text>
+              <Text fontSize={{ base: "40px", lg: "24px" }}>{text}</Text>
             </Tab>
           ))}
         </TabList>

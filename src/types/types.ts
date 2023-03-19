@@ -57,6 +57,7 @@ export type Driver =
 export type Race = {
   id: number;
   name: string;
+  trackName: string;
   country: Country;
   result?: Result;
 };
