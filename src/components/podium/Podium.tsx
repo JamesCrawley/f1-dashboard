@@ -11,7 +11,7 @@ const Podium: FC<PodiumProps> = ({ position, bgColor }) => {
       justifyContent="space-around"
       bgColor={bgColor}
       w="100%"
-      h={`${160 - position * 20}px`}
+      h={`${160 - position * 30}px`}
       _hover={{ filter: "contrast(150%)" }}
       borderTopLeftRadius="8px"
       borderTopRightRadius="8px"

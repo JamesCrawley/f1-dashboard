@@ -9,11 +9,11 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
   return (
     <Stack
       justifyContent="center"
-      w="240px"
-      h="240px"
+      w="200px"
       borderRadius="16px"
       p="16px"
       gap={{ base: "16px", lg: "8px" }}
+      fontWeight="900"
       {...props}
     >
       <Text fontSize={{ base: "32px", lg: "20px" }}>{player.name}</Text>
@@ -21,7 +21,7 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
       <Text
         fontSize={{ base: "120px", lg: "80px" }}
         lineHeight="60px"
-        fontWeight="bold"
+        fontWeight={900}
       >
         {player.points}
       </Text>
