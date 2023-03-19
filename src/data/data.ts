@@ -6,8 +6,8 @@ export const races: Race[] = [
     name: "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2023",
     country: "Bahrain",
     result: {
-      first: "Max Verstappen",
       pole: "Max Verstappen",
+      first: "Max Verstappen",
       fastestLap: "Guanyu Zhou",
       last: "Lando Norris",
     },
@@ -18,6 +18,9 @@ export const races: Race[] = [
     country: "Saudi Arabia",
     result: {
       pole: "Sergio Perez",
+      first: "Sergio Perez",
+      fastestLap: "Max Verstappen",
+      last: "Valtteri Bottas",
     },
   },
   {
