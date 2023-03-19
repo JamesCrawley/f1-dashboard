@@ -38,7 +38,12 @@ const Tabs = () => {
 
   return (
     <Box>
-      <ChakraTabs variant="enclosed" index={selectedTab} onChange={onTabChange}>
+      <ChakraTabs
+        variant="enclosed"
+        index={selectedTab}
+        onChange={onTabChange}
+        isFitted
+      >
         <TabList>
           {tabs.map(({ text }, key) => (
             <Tab key={key}>
@@ -48,7 +53,7 @@ const Tabs = () => {
         </TabList>
       </ChakraTabs>
 
-      <Box maxW="1000px" pt="16px">
+      <Box pt="16px">
         <Routes>
           {tabs.map(({ route }, key) => (
             <React.Fragment key={key}>{route}</React.Fragment>

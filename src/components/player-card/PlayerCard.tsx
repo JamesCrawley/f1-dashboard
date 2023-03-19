@@ -13,16 +13,20 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
       h="240px"
       borderRadius="16px"
       p="16px"
-      gap="8px"
+      gap={{ base: "16px", lg: "8px" }}
       {...props}
     >
-      <Text fontSize="20px">{player.name}</Text>
+      <Text fontSize={{ base: "32px", lg: "20px" }}>{player.name}</Text>
 
-      <Text fontSize="80px" lineHeight="60px" fontWeight="bold">
+      <Text
+        fontSize={{ base: "120px", lg: "80px" }}
+        lineHeight="60px"
+        fontWeight="bold"
+      >
         {player.points}
       </Text>
 
-      <Text fontSize="16px">Points</Text>
+      <Text fontSize={{ base: "32px", lg: "16px" }}>Points</Text>
     </Stack>
   );
 };

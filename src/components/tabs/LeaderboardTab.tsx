@@ -8,6 +8,7 @@ import { StoreContext } from '../../context/StoreContext';
 import { getOrdinal } from '../../scripts/utils';
 import { Player } from '../../types';
 import PlayerCard from '../player-card';
+import Podium from '../podium';
 
 type Top3Props = {
   players: Player[];
@@ -17,27 +18,6 @@ const Top3: FC<Top3Props> = ({ players }) => {
     gold: "#b4b4b4",
     silver: "#c9b037",
     bronze: "#ad8a56",
-  };
-
-  type PodiumProps = { position: number; bgColor: string };
-  const Podium: FC<PodiumProps> = ({ position, bgColor }) => {
-    return (
-      <Stack
-        id={`podium-${position}`}
-        justifyContent="space-around"
-        bgColor={bgColor}
-        w="100%"
-        h={`${160 - position * 20}px`}
-        _hover={{ filter: "contrast(150%)" }}
-        borderTopLeftRadius="8px"
-        borderTopRightRadius="8px"
-      >
-        <Text fontWeight="bold" color="white" fontSize="28px">
-          {position}
-          {getOrdinal(position)}
-        </Text>
-      </Stack>
-    );
   };
 
   return (
@@ -77,7 +57,12 @@ const LeaderboardTab = () => {
 
   return (
     <Box>
-      <Text fontSize="16px" fontWeight="light" textAlign="left" mb="16px">
+      <Text
+        fontSize={{ base: "32px", lg: "16px" }}
+        fontWeight="light"
+        textAlign="left"
+        mb="16px"
+      >
         Races Completed {racesCompleted} / {races.length}
       </Text>
 
@@ -85,17 +70,17 @@ const LeaderboardTab = () => {
 
       <Divider />
       <TableContainer>
-        <Table variant="striped">
+        <Table variant="striped" size="lg">
           <Thead>
             <Tr>
               <Th w="0px">
-                <Text>#</Text>
+                <Text fontSize={{ base: "32px", lg: "24px" }}>#</Text>
               </Th>
               <Th>
-                <Text>Name</Text>
+                <Text fontSize={{ base: "32px", lg: "24px" }}>Name</Text>
               </Th>
               <Th w="0px">
-                <Text>Points</Text>
+                <Text fontSize={{ base: "32px", lg: "24px" }}>Points</Text>
               </Th>
             </Tr>
           </Thead>
@@ -105,16 +90,22 @@ const LeaderboardTab = () => {
               return (
                 <Tr key={player.id}>
                   <Td>
-                    <Text>
+                    <Text fontSize={{ base: "40px", lg: "24px" }}>
                       {i + 4}
                       {getOrdinal(i + 4)}
                     </Text>
                   </Td>
                   <Td>
-                    <Text>{player.name}</Text>
+                    <Text fontSize={{ base: "40px", lg: "24px" }}>
+                      {player.name}
+                    </Text>
                   </Td>
                   <Td>
-                    <Text textAlign="end" fontWeight="bold">
+                    <Text
+                      textAlign="end"
+                      fontWeight="bold"
+                      fontSize={{ base: "40px", lg: "24px" }}
+                    >
                       {player.points}
                     </Text>
                   </Td>
