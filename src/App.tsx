@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Box, Flex, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
 import ColorModeSwitcher from './components/color-mode-switcher';
 import Tabs from './components/tabs';
@@ -16,9 +16,9 @@ const App = () => {
       >
         <Box textAlign="center" w="auto">
           <Flex justifyContent="space-between" alignItems="center" my="16px">
-            <Heading fontSize={{ base: "80px", lg: "40px" }} mb="16px">
+            <Text fontSize={{ base: "80px", lg: "40px" }} mb="16px">
               F1 Predictor
-            </Heading>
+            </Text>
 
             <ColorModeSwitcher />
           </Flex>

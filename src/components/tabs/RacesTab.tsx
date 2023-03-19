@@ -32,11 +32,7 @@ const RaceResults: FC<RaceResultsProps> = ({ race }) => {
         )}
 
         <em>
-          <Text
-            fontSize={{ base: "48px", lg: "24px" }}
-            textAlign="center"
-
-          >
+          <Text fontSize={{ base: "48px", lg: "24px" }} textAlign="center">
             {value ?? "-"}
           </Text>
         </em>
@@ -113,12 +109,12 @@ const RacesTab = () => {
   // TODO: fix this
   const Title: FC<{ children: any }> = ({ children }) => {
     return (
-      <Heading
+      <Text
         fontSize={{ base: "64px", lg: "32px" }}
         my={{ base: "64px", lg: "32px" }}
       >
         {children}
-      </Heading>
+      </Text>
     );
   };
 

@@ -60,7 +60,7 @@ const LeaderboardTab = () => {
       <Text
         fontSize={{ base: "32px", lg: "16px" }}
         fontWeight="light"
-        textAlign="left"
+        textAlign="center"
         mb="16px"
       >
         Races Completed {racesCompleted} / {races.length}
@@ -103,7 +103,6 @@ const LeaderboardTab = () => {
                   <Td>
                     <Text
                       textAlign="end"
-
                       fontSize={{ base: "40px", lg: "24px" }}
                     >
                       {player.points}
