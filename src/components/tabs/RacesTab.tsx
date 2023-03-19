@@ -35,7 +35,7 @@ const RaceResults: FC<RaceResultsProps> = ({ race }) => {
           <Text
             fontSize={{ base: "48px", lg: "24px" }}
             textAlign="center"
-            // fontWeight="bold"
+
           >
             {value ?? "-"}
           </Text>

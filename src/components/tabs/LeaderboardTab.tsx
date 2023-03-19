@@ -103,7 +103,7 @@ const LeaderboardTab = () => {
                   <Td>
                     <Text
                       textAlign="end"
-                      fontWeight="bold"
+
                       fontSize={{ base: "40px", lg: "24px" }}
                     >
                       {player.points}

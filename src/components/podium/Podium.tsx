@@ -17,7 +17,7 @@ const Podium: FC<PodiumProps> = ({ position, bgColor }) => {
       borderTopRightRadius="8px"
     >
       <Text
-        fontWeight="bold"
+
         color="white"
         fontSize={{ base: "42px", lg: "28px" }}
       >
