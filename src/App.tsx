@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react';
 
 import ColorModeSwitcher from './components/color-mode-switcher';
 import Tabs from './components/tabs';
