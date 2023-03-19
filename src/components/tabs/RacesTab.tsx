@@ -7,6 +7,17 @@ import { splitRaces } from '../../scripts/utils';
 import RaceAccordion from '../race-accordion';
 import RaceResults from '../race-results';
 
+const Title: FC<PropsWithChildren> = ({ children }) => {
+  return (
+    <Text
+      fontSize={{ base: "48px", lg: "24px" }}
+      my={{ base: "40px", lg: "24px" }}
+    >
+      {children}
+    </Text>
+  );
+};
+
 const RacesTab = () => {
   const { races } = useContext(StoreContext);
 
@@ -15,17 +26,6 @@ const RacesTab = () => {
   const currentRace = upcomingRaces[0].result?.pole
     ? upcomingRaces.shift()
     : null;
-
-  const Title: FC<PropsWithChildren> = ({ children }) => {
-    return (
-      <Text
-        fontSize={{ base: "48px", lg: "24px" }}
-        my={{ base: "40px", lg: "24px" }}
-      >
-        {children}
-      </Text>
-    );
-  };
 
   return (
     <Stack textAlign="center">
