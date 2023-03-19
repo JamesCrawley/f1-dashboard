@@ -23,16 +23,16 @@ const RaceResults: FC<RaceResultsProps> = ({ race }) => {
       <Box p="8px">
         {text && (
           <Flex justifyContent="center">
-            <Text fontSize={{ base: "36px", lg: "14px" }}>{text}</Text>
+            <Text fontSize={{ base: "32px", lg: "14px" }}>{text}</Text>
 
-            <Text fontSize={{ base: "42px", lg: "18px" }} ml="8px">
+            <Text fontSize={{ base: "36px", lg: "18px" }} ml="8px">
               {emoji}
             </Text>
           </Flex>
         )}
 
         <em>
-          <Text fontSize={{ base: "48px", lg: "24px" }} textAlign="center">
+          <Text fontSize={{ base: "40px", lg: "24px" }} textAlign="center">
             {value ?? "-"}
           </Text>
         </em>
