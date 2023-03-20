@@ -1,6 +1,8 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useState } from 'react';
 
-import { Box, Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import {
+  Box, Flex, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr
+} from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
 import { CompletedRace, Driver, Race, Result } from '../../types';
@@ -9,9 +11,11 @@ type RacePredictionProps = {
   race: Race | CompletedRace;
 };
 const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
+  const [isCompact, setIsCompact] = useState<boolean>(false);
   const { players } = useContext(StoreContext);
 
   const tableFontSize = { base: "32px", lg: "16px" };
+  const tdPx = isCompact ? "8px !important" : "initial";
 
   type TableRowProps = {
     resultType: keyof CompletedRace["result"];
@@ -30,9 +34,14 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
           const emoji = prediction === race.result?.[resultType] ? "✅" : "❌";
 
           return (
-            <Td key={player.id}>
-              <Flex justifyContent="space-between" gap="16px">
-                <Text fontSize={tableFontSize}>{prediction ?? "-"}</Text>
+            <Td key={player.id} px={tdPx}>
+              <Flex
+                justifyContent={!isCompact ? "space-between" : "space-around"}
+                gap="16px"
+              >
+                {!isCompact && (
+                  <Text fontSize={tableFontSize}>{prediction ?? "-"}</Text>
+                )}
 
                 {!!race.result?.first && (
                   <Text fontSize={tableFontSize}>{emoji}</Text>
@@ -54,35 +63,22 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
       >
         <Thead>
           <Tr>
-            <Th w="0px"></Th>
+            <Th w="0px">
+              <Flex gap="8px">
+                <Text fontSize={tableFontSize}>Compact</Text>
+
+                <Switch
+                  size="md"
+                  isChecked={isCompact}
+                  onChange={(e) => setIsCompact(e.target.checked)}
+                />
+              </Flex>
+            </Th>
 
             {players.map((player) => {
-              const racePredictions = Object.entries(
-                player.predictions[race.id] as Result
-              );
-
-              let pointsGained = 0;
-
-              racePredictions.forEach(([resultType, driver]) => {
-                if (race.result?.[resultType as keyof Result] === driver) {
-                  pointsGained += 5;
-                }
-              });
-
-              if (pointsGained === 20) pointsGained += 5;
-
               return (
-                <Th key={player.id}>
-                  <Text fontSize={tableFontSize}>
-                    {player.name}
-
-                    {pointsGained > 0 && (
-                      <Text as="span" color="green.500">
-                        {` +${pointsGained}`}
-                        {pointsGained === 25 ? "🌟" : ""}
-                      </Text>
-                    )}
-                  </Text>
+                <Th key={player.id} px={tdPx}>
+                  <Text fontSize={tableFontSize}>{player.name}</Text>
                 </Th>
               );
             })}
@@ -97,6 +93,39 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
           <TableRow resultType="fastestLap" label="Fastest Lap" race={race} />
 
           <TableRow resultType="pole" label="Pole" race={race} />
+
+          <Tr>
+            <Td>Points Gained</Td>
+
+            {players.map((player) => {
+              const predictions = Object.entries(
+                player.predictions[race.id] as Result
+              );
+
+              let pointsGained = 0;
+
+              predictions.forEach(([resultType, driver]) => {
+                if (race.result?.[resultType as keyof Result] === driver) {
+                  pointsGained += 5;
+                }
+              });
+
+              if (pointsGained === 20) pointsGained += 5;
+
+              return (
+                <Td px={tdPx}>
+                  <Text
+                    textAlign="center"
+                    color={pointsGained > 0 ? "green.500" : "initial"}
+                  >
+                    {pointsGained > 0
+                      ? ` +${pointsGained} ${pointsGained === 25 ? "🌟" : ""}`
+                      : 0}
+                  </Text>
+                </Td>
+              );
+            })}
+          </Tr>
         </Tbody>
       </Table>
     </TableContainer>

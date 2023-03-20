@@ -29,7 +29,7 @@ const RacesTab = () => {
     : null;
 
   return (
-    <Stack textAlign="center">
+    <Stack textAlign="center" gap="32px">
       {currentRace && (
         <Box bgColor="green.200" py="16px" borderRadius="8px">
           <Title>

@@ -41,34 +41,38 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
             <AccordionHeader name={`${race.country} - ${race.trackName}`} />
 
             <AccordionPanel textAlign="left" pb="32px">
-              <Stack gap="8px">
-                <Box>
-                  <Text fontSize="32px" textAlign="center" mb="8px">
-                    Results
-                  </Text>
+              <Stack gap="64px">
+                {race.result ? (
+                  <Box>
+                    <Text fontSize="40px" textAlign="center" mb="8px">
+                      Results
+                    </Text>
 
-                  <Divider />
+                    <Divider />
 
-                  {race.result ? (
                     <RaceResults result={race.result} />
-                  ) : (
-                    <Text textAlign="center">No results yet</Text>
-                  )}
-                </Box>
-
-                <Box>
-                  <Text fontSize="32px" mb="8px" textAlign="center">
-                    Predictions
+                  </Box>
+                ) : (
+                  <Text fontSize="32px" textAlign="center">
+                    No results yet
                   </Text>
+                )}
 
-                  <Divider />
+                {players.some((player) => !!player.predictions[race.id]) ? (
+                  <Box>
+                    <Text fontSize="40px" mb="8px" textAlign="center">
+                      Predictions
+                    </Text>
 
-                  {players.some((player) => !!player.predictions[race.id]) ? (
+                    <Divider />
+
                     <RacePrediction race={race} />
-                  ) : (
-                    <Text textAlign="center">No predictions yet</Text>
-                  )}
-                </Box>
+                  </Box>
+                ) : (
+                  <Text fontSize="32px" textAlign="center">
+                    No predictions yet
+                  </Text>
+                )}
               </Stack>
             </AccordionPanel>
           </AccordionItem>
