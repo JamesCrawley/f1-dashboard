@@ -4,6 +4,7 @@ import { Box, Stack, Text } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
 import { splitRaces } from '../../scripts/utils';
+import { Result } from '../../types';
 import RaceAccordion from '../race-accordion';
 import RaceResults from '../race-results';
 
@@ -35,7 +36,7 @@ const RacesTab = () => {
             🏎️ {`${currentRace.country} - ${currentRace.trackName}`} 🏎️
           </Title>
 
-          <RaceResults race={currentRace} />
+          <RaceResults result={currentRace.result as Result} />
         </Box>
       )}
 

@@ -71,11 +71,11 @@ export type Player = {
   predictions: Predictions;
 };
 
-type Result = {
+export type Result = {
   pole: Driver;
   first?: Driver;
   last?: Driver;
   fastestLap?: Driver;
 };
 
-export type Predictions = { [key: string]: Result | null };
+export type Predictions = { [raceId: string]: Result | null };
