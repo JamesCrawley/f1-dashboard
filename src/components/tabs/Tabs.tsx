@@ -4,6 +4,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Box, Tab, TabList, Tabs as ChakraTabs, Text } from '@chakra-ui/react';
 
 import LeaderboardTab from './LeaderboardTab';
+import PredictionsTab from './PredictionsTab';
 import RacesTab from './RacesTab';
 
 const Tabs = () => {
@@ -19,6 +20,11 @@ const Tabs = () => {
       text: "Races",
       path: "/races",
       route: <Route path="/races" element={<RacesTab />} />,
+    },
+    {
+      text: "Predictions",
+      path: "/predictions",
+      route: <Route path="/predictions" element={<PredictionsTab />} />,
     },
   ];
 
