@@ -115,6 +115,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
               return (
                 <Td px={tdPx}>
                   <Text
+                    fontSize={tableFontSize}
                     textAlign="center"
                     color={pointsGained > 0 ? "green.500" : "initial"}
                   >
