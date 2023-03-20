@@ -78,4 +78,4 @@ export type Result = {
   fastestLap?: Driver;
 };
 
-export type Predictions = { [key: string]: Result | null };
+export type Predictions = { [raceId: string]: Result | null };

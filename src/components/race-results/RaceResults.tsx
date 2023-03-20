@@ -10,26 +10,20 @@ type RaceResultFieldProps = {
   value?: Driver;
 };
 const RaceResultField: FC<RaceResultFieldProps> = ({ text, emoji, value }) => {
+  const fontSize = { base: "36px", lg: "24px" };
+  const Emoji = () => <Text fontSize={fontSize}>{emoji}</Text>;
+
   return (
-    <Flex
-      justifyContent="space-between"
-      columnGap="16px"
-      p="8px"
-      alignItems="center"
-    >
-      <Text opacity="0.5" fontSize={{ base: "36px", lg: "24px" }}>
-        {emoji}
-      </Text>
+    <Flex justifyContent="space-between" p="8px" alignItems="center">
+      <Emoji />
 
       <Box textAlign="center">
-        <Text fontSize={{ base: "24px", lg: "18px" }}>{text}</Text>
+        <Text fontSize={{ base: "24px", lg: "14px" }}>{text}</Text>
 
-        <Text fontSize={{ base: "36px", lg: "24px" }}>{value ?? "-"}</Text>
+        <Text fontSize={fontSize}>{value ?? "-"}</Text>
       </Box>
 
-      <Text opacity="0.5" fontSize={{ base: "36px", lg: "24px" }}>
-        {emoji}
-      </Text>
+      <Emoji />
     </Flex>
   );
 };
@@ -40,7 +34,7 @@ type RaceResultsProps = {
 const RaceResults: FC<RaceResultsProps> = ({ result }) => {
   return (
     <VStack>
-      <SimpleGrid templateColumns="1fr 1fr" w="100%" columnGap="32px">
+      <SimpleGrid templateColumns="1fr 1fr" w="100%" columnGap="128px">
         <RaceResultField text="First" emoji="🏆" value={result?.first} />
 
         <RaceResultField text="Last" emoji="👎" value={result?.last} />

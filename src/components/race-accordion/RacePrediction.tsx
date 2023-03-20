@@ -3,13 +3,15 @@ import { FC, useContext } from 'react';
 import { Box, Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
-import { CompletedRace, Race } from '../../types';
+import { CompletedRace, Driver, Race, Result } from '../../types';
 
 type RacePredictionProps = {
   race: Race | CompletedRace;
 };
 const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
   const { players } = useContext(StoreContext);
+
+  const tableFontSize = { base: "32px", lg: "16px" };
 
   type TableRowProps = {
     resultType: keyof CompletedRace["result"];
@@ -20,7 +22,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
     return (
       <Tr>
         <Td>
-          <Text fontSize={{ base: "24px", lg: "16px" }}>{label}</Text>
+          <Text fontSize={tableFontSize}>{label}</Text>
         </Td>
 
         {players.map((player) => {
@@ -30,12 +32,10 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
           return (
             <Td key={player.id}>
               <Flex justifyContent="space-between" gap="16px">
-                <Text fontSize={{ base: "24px", lg: "16px" }}>
-                  {prediction ?? "-"}
-                </Text>
+                <Text fontSize={tableFontSize}>{prediction ?? "-"}</Text>
 
                 {!!race.result?.first && (
-                  <Text fontSize={{ base: "24px", lg: "16px" }}>{emoji}</Text>
+                  <Text fontSize={tableFontSize}>{emoji}</Text>
                 )}
               </Flex>
             </Td>
@@ -47,18 +47,45 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
 
   return (
     <TableContainer>
-      <Table variant="striped" size={{ base: "lg", lg: "md" }}>
+      <Table
+        scrollBehavior="smooth"
+        variant="striped"
+        size={{ base: "lg", lg: "md" }}
+      >
         <Thead>
           <Tr>
-            <Th w="0px">
-              <Text fontSize={{ base: "32px", lg: "16px" }}></Text>
-            </Th>
+            <Th w="0px"></Th>
 
-            {players.map((player) => (
-              <Th key={player.id}>
-                <Text>{player.name}</Text>
-              </Th>
-            ))}
+            {players.map((player) => {
+              const racePredictions = Object.entries(
+                player.predictions[race.id] as Result
+              );
+
+              let pointsGained = 0;
+
+              racePredictions.forEach(([resultType, driver]) => {
+                if (race.result?.[resultType as keyof Result] === driver) {
+                  pointsGained += 5;
+                }
+              });
+
+              if (pointsGained === 20) pointsGained += 5;
+
+              return (
+                <Th key={player.id}>
+                  <Text fontSize={tableFontSize}>
+                    {player.name}
+
+                    {pointsGained > 0 && (
+                      <Text as="span" color="green.500">
+                        {` +${pointsGained}`}
+                        {pointsGained === 25 ? "🌟" : ""}
+                      </Text>
+                    )}
+                  </Text>
+                </Th>
+              );
+            })}
           </Tr>
         </Thead>
 
