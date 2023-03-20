@@ -1,11 +1,14 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Text
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Divider, Heading,
+  Stack, Text
 } from '@chakra-ui/react';
 
+import { StoreContext } from '../../context/StoreContext';
 import { CompletedRace, Race } from '../../types';
 import RaceResults from '../race-results';
+import RacePrediction from './RacePrediction';
 
 type RaceAccordionProps = {
   races: Race[] | CompletedRace[];
@@ -28,15 +31,45 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
     );
   };
 
+  const { players } = useContext(StoreContext);
+
   return (
-    <Accordion allowToggle allowMultiple defaultIndex={defaultIndex}>
+    <Accordion allowToggle defaultIndex={defaultIndex}>
       {races.map((race) => {
         return (
           <AccordionItem key={race.id}>
             <AccordionHeader name={`${race.country} - ${race.trackName}`} />
 
-            <AccordionPanel textAlign="left" pb="8px">
-              <RaceResults race={race} />
+            <AccordionPanel textAlign="left" pb="32px">
+              <Stack gap="8px">
+                <Box>
+                  <Text fontSize="32px" textAlign="center" mb="8px">
+                    Results
+                  </Text>
+
+                  <Divider />
+
+                  {race.result ? (
+                    <RaceResults result={race.result} />
+                  ) : (
+                    <Text textAlign="center">No results yet</Text>
+                  )}
+                </Box>
+
+                <Box>
+                  <Text fontSize="32px" mb="8px" textAlign="center">
+                    Predictions
+                  </Text>
+
+                  <Divider />
+
+                  {players.some((player) => !!player.predictions[race.id]) ? (
+                    <RacePrediction race={race} />
+                  ) : (
+                    <Text textAlign="center">No predictions yet</Text>
+                  )}
+                </Box>
+              </Stack>
             </AccordionPanel>
           </AccordionItem>
         );

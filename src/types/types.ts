@@ -71,7 +71,7 @@ export type Player = {
   predictions: Predictions;
 };
 
-type Result = {
+export type Result = {
   pole: Driver;
   first?: Driver;
   last?: Driver;
