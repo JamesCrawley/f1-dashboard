@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Box, LightMode, Stack, StackProps, Text } from '@chakra-ui/react';
+import { Stack, StackProps, Text } from '@chakra-ui/react';
 
 import { Player } from '../../types';
 

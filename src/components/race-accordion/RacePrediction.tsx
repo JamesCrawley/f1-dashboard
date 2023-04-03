@@ -119,7 +119,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
                   <Text
                     fontSize={tableFontSize}
                     textAlign="center"
-                    color={pointsGained > 0 ? "green.500" : "initial"}
+                    color={pointsGained > 0 ? "green.500" : "white"}
                   >
                     {pointsGained > 0
                       ? ` +${pointsGained} ${pointsGained === 25 ? "🌟" : ""}`
