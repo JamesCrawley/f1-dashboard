@@ -44,7 +44,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
               <Stack gap="64px">
                 {race.result ? (
                   <Box>
-                    <Text fontSize="40px" textAlign="center" mb="8px">
+                    <Text fontSize="32px" textAlign="center" mb="8px">
                       Results
                     </Text>
 
@@ -60,7 +60,7 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
 
                 {players.some((player) => !!player.predictions[race.id]) ? (
                   <Box>
-                    <Text fontSize="40px" mb="8px" textAlign="center">
+                    <Text fontSize="32px" mb="8px" textAlign="center">
                       Predictions
                     </Text>
 

@@ -86,16 +86,18 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
         </Thead>
 
         <Tbody>
+          <TableRow resultType="pole" label="Pole" race={race} />
+
           <TableRow resultType="first" label="First" race={race} />
 
           <TableRow resultType="last" label="Last" race={race} />
 
           <TableRow resultType="fastestLap" label="Fastest Lap" race={race} />
 
-          <TableRow resultType="pole" label="Pole" race={race} />
-
           <Tr>
-            <Td>Points Gained</Td>
+            <Td>
+              <Text fontSize={tableFontSize}>Points Gained</Text>
+            </Td>
 
             {players.map((player) => {
               const predictions = Object.entries(
