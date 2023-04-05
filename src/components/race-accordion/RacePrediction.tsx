@@ -1,7 +1,7 @@
 import { FC, useContext, useState } from 'react';
 
 import {
-  Box, Flex, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr
+  Flex, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue
 } from '@chakra-ui/react';
 
 import { StoreContext } from '../../context/StoreContext';
@@ -16,6 +16,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
 
   const tableFontSize = { base: "32px", lg: "16px" };
   const tdPx = isCompact ? "8px !important" : "initial";
+  const textColor = useColorModeValue("black", "white");
 
   type TableRowProps = {
     resultType: keyof CompletedRace["result"];
@@ -119,7 +120,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
                   <Text
                     fontSize={tableFontSize}
                     textAlign="center"
-                    color={pointsGained > 0 ? "green.500" : "white"}
+                    color={pointsGained > 0 ? "green.500" : textColor}
                   >
                     {pointsGained > 0
                       ? ` +${pointsGained} ${pointsGained === 25 ? "🌟" : ""}`
