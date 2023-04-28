@@ -42,6 +42,9 @@ export const races: Race[] = [
     name: "FORMULA 1 AZERBAIJAN GRAND PRIX 2023",
     trackName: "Baku City Circuit",
     country: "Azerbaijan",
+    result: {
+      pole: "Charles Leclerc",
+    },
   },
   {
     id: 5,
@@ -183,6 +186,12 @@ export const players: Player[] = [
         last: "Lando Norris",
         fastestLap: "Charles Leclerc",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Valtteri Bottas",
+        fastestLap: "Fernando Alonso",
+      },
     },
   },
   {
@@ -208,6 +217,12 @@ export const players: Player[] = [
         last: "Lando Norris",
         fastestLap: "Sergio Perez",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Sergio Perez",
+        last: "Valtteri Bottas",
+        fastestLap: "George Russell",
+      },
     },
   },
   {
@@ -230,6 +245,12 @@ export const players: Player[] = [
       3: {
         pole: "Max Verstappen",
         first: "Max Verstappen",
+        last: "Alex Albon",
+        fastestLap: "Max Verstappen",
+      },
+      4: {
+        pole: "Max Verstappen",
+        first: "Sergio Perez",
         last: "Alex Albon",
         fastestLap: "Max Verstappen",
       },
@@ -258,6 +279,12 @@ export const players: Player[] = [
         last: "Lando Norris",
         fastestLap: "Max Verstappen",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nyck de Vries",
+        fastestLap: "Sergio Perez",
+      },
     },
   },
   {
@@ -283,6 +310,12 @@ export const players: Player[] = [
         last: "Guanyu Zhou",
         fastestLap: "Max Verstappen",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nyck de Vries",
+        fastestLap: "Lewis Hamilton",
+      },
     },
   },
   {
@@ -303,6 +336,12 @@ export const players: Player[] = [
         fastestLap: "Fernando Alonso",
       },
       3: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Logan Sargeant",
+        fastestLap: "Max Verstappen",
+      },
+      4: {
         pole: "Max Verstappen",
         first: "Max Verstappen",
         last: "Logan Sargeant",
@@ -333,6 +372,12 @@ export const players: Player[] = [
         last: "Oscar Piastri",
         fastestLap: "Sergio Perez",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Valtteri Bottas",
+        fastestLap: "Sergio Perez",
+      },
     },
   },
   {
@@ -356,6 +401,12 @@ export const players: Player[] = [
         pole: "Max Verstappen",
         first: "Max Verstappen",
         last: "Lando Norris",
+        fastestLap: "Max Verstappen",
+      },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Logan Sargeant",
         fastestLap: "Max Verstappen",
       },
     },
@@ -383,6 +434,12 @@ export const players: Player[] = [
         last: "Guanyu Zhou",
         fastestLap: "Fernando Alonso",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Oscar Piastri",
+        fastestLap: "Sergio Perez",
+      },
     },
   },
   {
@@ -408,6 +465,12 @@ export const players: Player[] = [
         last: "Oscar Piastri",
         fastestLap: "Nico Hulkenberg",
       },
+      4: {
+        pole: "Sergio Perez",
+        first: "Fernando Alonso",
+        last: "Lewis Hamilton",
+        fastestLap: "Max Verstappen",
+      },
     },
   },
   {
@@ -431,6 +494,12 @@ export const players: Player[] = [
         pole: "Fernando Alonso",
         first: "Max Verstappen",
         last: "Alex Albon",
+        fastestLap: "Max Verstappen",
+      },
+      4: {
+        pole: "Sergio Perez",
+        first: "Max Verstappen",
+        last: "Esteban Ocon",
         fastestLap: "Max Verstappen",
       },
     },
@@ -458,6 +527,12 @@ export const players: Player[] = [
         last: "Logan Sargeant",
         fastestLap: "Fernando Alonso",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nyck de Vries",
+        fastestLap: "Max Verstappen",
+      },
     },
   },
   {
@@ -483,6 +558,12 @@ export const players: Player[] = [
         last: "Guanyu Zhou",
         fastestLap: "Sergio Perez",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nico Hulkenberg",
+        fastestLap: "Charles Leclerc",
+      },
     },
   },
   {
@@ -506,6 +587,12 @@ export const players: Player[] = [
         pole: "Max Verstappen",
         first: "Max Verstappen",
         last: "Logan Sargeant",
+        fastestLap: "Sergio Perez",
+      },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nico Hulkenberg",
         fastestLap: "Sergio Perez",
       },
     },
@@ -533,6 +620,12 @@ export const players: Player[] = [
         last: "Oscar Piastri",
         fastestLap: "Max Verstappen",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nico Hulkenberg",
+        fastestLap: "Max Verstappen",
+      },
     },
   },
   {
@@ -558,6 +651,12 @@ export const players: Player[] = [
         last: "Nyck de Vries",
         fastestLap: "Fernando Alonso",
       },
+      4: {
+        pole: "Fernando Alonso",
+        first: "Max Verstappen",
+        last: "Guanyu Zhou",
+        fastestLap: "Sergio Perez",
+      },
     },
   },
   {
@@ -581,6 +680,12 @@ export const players: Player[] = [
         pole: "Max Verstappen",
         first: "Max Verstappen",
         last: "Kevin Magnussen",
+        fastestLap: "Sergio Perez",
+      },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nico Hulkenberg",
         fastestLap: "Sergio Perez",
       },
     },
@@ -608,6 +713,12 @@ export const players: Player[] = [
         last: "Nico Hulkenberg",
         fastestLap: "Charles Leclerc",
       },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Logan Sargeant",
+        fastestLap: "George Russell",
+      },
     },
   },
   {
@@ -632,6 +743,12 @@ export const players: Player[] = [
         first: "Max Verstappen",
         last: "Nico Hulkenberg",
         fastestLap: "Sergio Perez",
+      },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Nyck de Vries",
+        fastestLap: "George Russell",
       },
     },
   },
@@ -658,6 +775,12 @@ export const players: Player[] = [
         last: "Nyck de Vries",
         fastestLap: "Charles Leclerc",
       },
+      4: {
+        pole: "Lewis Hamilton",
+        first: "Lewis Hamilton",
+        last: "Logan Sargeant",
+        fastestLap: "Fernando Alonso",
+      },
     },
   },
   {
@@ -681,6 +804,12 @@ export const players: Player[] = [
         pole: "Max Verstappen",
         first: "Max Verstappen",
         last: "Oscar Piastri",
+        fastestLap: "Sergio Perez",
+      },
+      4: {
+        pole: "Max Verstappen",
+        first: "Max Verstappen",
+        last: "Valtteri Bottas",
         fastestLap: "Sergio Perez",
       },
     },
@@ -708,6 +837,12 @@ export const players: Player[] = [
         last: "Oscar Piastri",
         fastestLap: "Max Verstappen",
       },
+      4: {
+        pole: "Sergio Perez",
+        first: "Max Verstappen",
+        last: "Guanyu Zhou",
+        fastestLap: "Max Verstappen",
+      },
     },
   },
   {
@@ -732,6 +867,12 @@ export const players: Player[] = [
         first: "Max Verstappen",
         last: "Yuki Tsunoda",
         fastestLap: "Fernando Alonso",
+      },
+      4: {
+        pole: "Sergio Perez",
+        first: "Max Verstappen",
+        last: "Valtteri Bottas",
+        fastestLap: "Charles Leclerc",
       },
     },
   },
