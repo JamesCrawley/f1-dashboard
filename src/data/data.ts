@@ -44,6 +44,9 @@ export const races: Race[] = [
     country: "Azerbaijan",
     result: {
       pole: "Charles Leclerc",
+      first: "Sergio Perez",
+      last: "Valtteri Bottas",
+      fastestLap: "George Russell",
     },
   },
   {
