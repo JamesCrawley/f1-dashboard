@@ -54,6 +54,12 @@ export const races: Race[] = [
     name: "FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2023",
     trackName: "Miami International Autodrome",
     country: "United States",
+    result: {
+      pole: "Sergio Perez",
+      first: "Max Verstappen",
+      last: "Logan Sargeant",
+      fastestLap: "Max Verstappen",
+    },
   },
   {
     id: 6,
