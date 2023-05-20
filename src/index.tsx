@@ -1,15 +1,15 @@
-import '@fontsource/mulish';
+import "@fontsource/mulish";
 
-import * as ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import * as ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
-import App from './App';
-import { StoreContext } from './context/StoreContext';
-import { players, races } from './data';
-import { getPlayersWithPoints } from './scripts/utils';
-import theme from './theme';
+import App from "./App";
+import { StoreContext } from "./context/StoreContext";
+import { players, races } from "./data";
+import { getPlayersWithPoints } from "./scripts/utils";
+import theme from "./theme";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,17 +1,25 @@
-import { FC, useContext } from 'react';
+import { FC, useContext } from "react";
 
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Divider, Heading,
-  Stack, Text
-} from '@chakra-ui/react';
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Divider,
+  Heading,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
-import { StoreContext } from '../../context/StoreContext';
-import { CompletedRace, Race } from '../../types';
-import RaceResults from '../race-results';
-import RacePrediction from './RacePrediction';
+import { StoreContext } from "../../context/StoreContext";
+import { Race } from "../../types";
+import RaceResults from "../race-results";
+import RacePrediction from "./RacePrediction";
 
 type RaceAccordionProps = {
-  races: Race[] | CompletedRace[];
+  races: Race[];
   defaultIndex?: number;
 };
 const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
@@ -40,38 +48,40 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
           <AccordionItem key={race.id}>
             <AccordionHeader name={`${race.country} - ${race.trackName}`} />
 
-            <AccordionPanel textAlign="left" pb="32px">
-              <Stack gap="64px">
-                {race.result ? (
-                  <Box>
-                    <Text fontSize="32px" textAlign="center" mb="8px">
-                      Results
-                    </Text>
-
-                    <Divider />
-
-                    <RaceResults result={race.result} />
-                  </Box>
-                ) : (
-                  <Text fontSize="32px" textAlign="center">
-                    No results yet
+            <AccordionPanel textAlign="left" py="16px">
+              <Stack gap="32px" textAlign="center">
+                {race.status === "cancelled" ? (
+                  <Text fontSize="36px" mb="16px" color="red">
+                    ❗ Race Cancelled ❗
                   </Text>
-                )}
-
-                {players.some((player) => !!player.predictions[race.id]) ? (
-                  <Box>
-                    <Text fontSize="32px" mb="8px" textAlign="center">
-                      Predictions
-                    </Text>
-
-                    <Divider />
-
-                    <RacePrediction race={race} />
-                  </Box>
                 ) : (
-                  <Text fontSize="32px" textAlign="center">
-                    No predictions yet
-                  </Text>
+                  <>
+                    {race.result && (
+                      <Box>
+                        <Text fontSize="36px" mb="16px">
+                          Results
+                        </Text>
+
+                        <Divider />
+
+                        <RaceResults result={race.result} />
+                      </Box>
+                    )}
+
+                    {players.some((player) => !!player.predictions[race.id]) ? (
+                      <Box>
+                        <Text fontSize="36px" mb="16px">
+                          Predictions
+                        </Text>
+
+                        <Divider />
+
+                        <RacePrediction race={race} />
+                      </Box>
+                    ) : (
+                      <Text fontSize="36px">No predictions yet</Text>
+                    )}
+                  </>
                 )}
               </Stack>
             </AccordionPanel>

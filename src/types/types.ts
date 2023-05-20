@@ -59,10 +59,9 @@ export type Race = {
   name: string;
   trackName: string;
   country: Country;
+  status: "completed" | "upcoming" | "cancelled";
   result?: Result;
 };
-
-export type CompletedRace = Required<Race>;
 
 export type Player = {
   id: number;
@@ -78,4 +77,7 @@ export type Result = {
   fastestLap?: Driver;
 };
 
-export type Predictions = { [raceId: string]: Result | null };
+export type PredictionKeys = "pole" | "first" | "last" | "fastestLap";
+export type RacePrediction = Record<PredictionKeys, Driver | null>;
+
+export type Predictions = { [raceId: string]: RacePrediction };

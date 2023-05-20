@@ -1,18 +1,29 @@
-import { FC, useContext } from 'react';
+import { FC, useContext } from "react";
 
 import {
-  Box, Divider, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr
-} from '@chakra-ui/react';
+  Box,
+  Divider,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 
-import { StoreContext } from '../../context/StoreContext';
-import { getOrdinal } from '../../scripts/utils';
-import Top3 from './Top3';
+import { StoreContext } from "../../context/StoreContext";
+import { getOrdinal } from "../../scripts/utils";
+import Top3 from "./Top3";
 
 const LeaderboardTab = () => {
   const { races, players } = useContext(StoreContext);
 
   const racesCompleted = races
-    .map(({ result }): number => (result?.first ? 1 : 0))
+    .map(({ result, status }): number =>
+      result?.first || status === "cancelled" ? 1 : 0
+    )
     .reduce((a, b) => a + b);
 
   const sortedPlayers = [...players];

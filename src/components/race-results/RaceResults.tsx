@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import { Box, Flex, FlexProps, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 
-import { CompletedRace, Driver, Race, Result } from '../../types';
+import { Driver, Result } from "../../types";
 
 type RaceResultFieldProps = {
   text: "First" | "Last" | "Fastest Lap" | "Pole";

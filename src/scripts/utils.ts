@@ -1,4 +1,4 @@
-import { CompletedRace, Player, Predictions, Race } from '../types';
+import { Player, Race, Result } from "../types";
 
 // TODO: Rename this
 export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
@@ -8,26 +8,29 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
     let points = 0;
 
     completedRaces.forEach((race) => {
-      if (player.predictions[race.id] === null) {
+      if (race.status === "cancelled" || player.predictions[race.id] === null) {
         return;
       }
 
       let pointsToAdd = 0;
 
       const { predictions } = player;
-      if (predictions[race.id]?.pole === race.result.pole) {
+
+      if (predictions[race.id]?.pole === (race.result as Result).pole) {
         pointsToAdd += 5;
       }
 
-      if (predictions[race.id]?.first === race.result.first) {
+      if (predictions[race.id]?.first === (race.result as Result).first) {
         pointsToAdd += 5;
       }
 
-      if (predictions[race.id]?.last === race.result.last) {
+      if (predictions[race.id]?.last === (race.result as Result).last) {
         pointsToAdd += 5;
       }
 
-      if (predictions[race.id]?.fastestLap === race.result.fastestLap) {
+      if (
+        predictions[race.id]?.fastestLap === (race.result as Result).fastestLap
+      ) {
         pointsToAdd += 5;
       }
 
@@ -47,16 +50,18 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
 };
 
 type SplitRaces = {
-  completedRaces: CompletedRace[];
+  completedRaces: Race[];
   upcomingRaces: Race[];
 };
 export const splitRaces = (races: Race[]): SplitRaces => {
-  const completedRaces: CompletedRace[] = [];
+  const completedRaces: Race[] = [];
   const upcomingRaces: Race[] = [];
 
   races.forEach((race) => {
-    if (race.result?.first) {
-      completedRaces.push(race as CompletedRace);
+    const { result, status } = race;
+
+    if (result?.first || status === "cancelled") {
+      completedRaces.push(race);
     } else {
       upcomingRaces.push(race);
     }

@@ -1,14 +1,24 @@
-import { FC, useContext, useState } from 'react';
+import { FC, useContext, useState } from "react";
 
 import {
-  Flex, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue
-} from '@chakra-ui/react';
+  Flex,
+  Switch,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
-import { StoreContext } from '../../context/StoreContext';
-import { CompletedRace, Driver, Race, Result } from '../../types';
+import { StoreContext } from "../../context/StoreContext";
+import { Driver, Race, Result } from "../../types";
 
 type RacePredictionProps = {
-  race: Race | CompletedRace;
+  race: Race;
 };
 const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
   const [isCompact, setIsCompact] = useState<boolean>(false);
@@ -19,8 +29,8 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
   const textColor = useColorModeValue("black", "white");
 
   type TableRowProps = {
-    resultType: keyof CompletedRace["result"];
-    race: Race | CompletedRace;
+    resultType: keyof Result;
+    race: Race;
     label: "First" | "Last" | "Fastest Lap" | "Pole";
   };
   const TableRow: FC<TableRowProps> = ({ resultType, race, label }) => {

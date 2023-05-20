@@ -1,12 +1,12 @@
-import { FC, PropsWithChildren, useContext } from 'react';
+import { FC, PropsWithChildren, useContext } from "react";
 
-import { Box, Stack, Text } from '@chakra-ui/react';
+import { Box, Stack, Text } from "@chakra-ui/react";
 
-import { StoreContext } from '../../context/StoreContext';
-import { splitRaces } from '../../scripts/utils';
-import { Result } from '../../types';
-import RaceAccordion from '../race-accordion';
-import RaceResults from '../race-results';
+import { StoreContext } from "../../context/StoreContext";
+import { splitRaces } from "../../scripts/utils";
+import { Result } from "../../types";
+import RaceAccordion from "../race-accordion";
+import RaceResults from "../race-results";
 
 const Title: FC<PropsWithChildren> = ({ children }) => {
   return (
