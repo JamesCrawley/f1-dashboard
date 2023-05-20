@@ -18,27 +18,33 @@ import { Race } from "../../types";
 import RaceResults from "../race-results";
 import RacePrediction from "./RacePrediction";
 
+const fontSize = { base: "36px", lg: "24px" };
+const textProps = {
+  fontSize,
+  mb: "16px",
+};
+
+type AccordionHeaderProps = Pick<Race, "name">;
+const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
+  return (
+    <AccordionButton
+      py={{ base: "16px", lg: "8px" }}
+      _expanded={{ fontWeight: "bold" }}
+    >
+      <Text flex="1" fontSize={fontSize} textAlign="left">
+        {name}
+      </Text>
+
+      <AccordionIcon />
+    </AccordionButton>
+  );
+};
+
 type RaceAccordionProps = {
   races: Race[];
   defaultIndex?: number;
 };
 const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
-  type AccordionHeaderProps = Pick<Race, "name">;
-  const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
-    return (
-      <AccordionButton
-        py={{ base: "16px", lg: "8px" }}
-        _expanded={{ fontWeight: "bold" }}
-      >
-        <Text flex="1" fontSize={{ base: "36px", lg: "16px" }} textAlign="left">
-          {name}
-        </Text>
-
-        <AccordionIcon />
-      </AccordionButton>
-    );
-  };
-
   const { players } = useContext(StoreContext);
 
   return (
@@ -51,16 +57,14 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
             <AccordionPanel textAlign="left" py="16px">
               <Stack gap="32px" textAlign="center">
                 {race.status === "cancelled" ? (
-                  <Text fontSize="36px" mb="16px" color="red">
+                  <Text {...textProps} color="red">
                     ❗ Race Cancelled ❗
                   </Text>
                 ) : (
                   <>
                     {race.result && (
                       <Box>
-                        <Text fontSize="36px" mb="16px">
-                          Results
-                        </Text>
+                        <Text {...textProps}>Results</Text>
 
                         <Divider />
 
@@ -70,16 +74,14 @@ const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
 
                     {players.some((player) => !!player.predictions[race.id]) ? (
                       <Box>
-                        <Text fontSize="36px" mb="16px">
-                          Predictions
-                        </Text>
+                        <Text {...textProps}>Predictions</Text>
 
                         <Divider />
 
                         <RacePrediction race={race} />
                       </Box>
                     ) : (
-                      <Text fontSize="36px">No predictions yet</Text>
+                      <Text {...textProps}>No predictions yet</Text>
                     )}
                   </>
                 )}
