@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+# .js files transpiled from .ts scripts
+src/**/*.js
+
+# spreadsheet
+.xlsx
+
 # testing
 /coverage
 
