@@ -1,6 +1,11 @@
 import { FC, PropsWithChildren, useContext } from "react";
-
-import { Box, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  Text,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 import { StoreContext } from "../../context/StoreContext";
 import { splitRaces } from "../../scripts/utils";
@@ -22,16 +27,14 @@ const Title: FC<PropsWithChildren> = ({ children }) => {
 const RacesTab = () => {
   const { races } = useContext(StoreContext);
 
-  const { completedRaces, upcomingRaces } = splitRaces(races);
+  const { completedRaces, upcomingRaces, currentRace } = splitRaces(races);
 
-  const currentRace = upcomingRaces[0].result?.pole
-    ? upcomingRaces.shift()
-    : null;
+  const bgColor = useColorModeValue("green.200", "green.400");
 
   return (
     <Stack textAlign="center" gap="32px">
       {currentRace && (
-        <Box bgColor="green.200" p="16px" borderRadius="8px">
+        <Box bgColor={bgColor} p="16px" borderRadius="8px">
           <Title>
             🏎️ {`${currentRace.country} - ${currentRace.trackName}`} 🏎️
           </Title>

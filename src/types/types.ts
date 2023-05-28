@@ -59,7 +59,7 @@ export type Race = {
   name: string;
   trackName: string;
   country: Country;
-  status: "completed" | "upcoming" | "cancelled";
+  status: "completed" | "upcoming" | "in-progress" | "cancelled";
   result?: Result;
 };
 

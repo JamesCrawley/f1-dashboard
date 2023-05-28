@@ -52,13 +52,20 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
 type SplitRaces = {
   completedRaces: Race[];
   upcomingRaces: Race[];
+  currentRace: Race | null;
 };
 export const splitRaces = (races: Race[]): SplitRaces => {
   const completedRaces: Race[] = [];
   const upcomingRaces: Race[] = [];
+  let currentRace: Race | null = null;
 
   races.forEach((race) => {
     const { result, status } = race;
+
+    if (status === "in-progress") {
+      currentRace = race;
+      return;
+    }
 
     if (result?.first || status === "cancelled") {
       completedRaces.push(race);
@@ -67,7 +74,7 @@ export const splitRaces = (races: Race[]): SplitRaces => {
     }
   });
 
-  return { completedRaces, upcomingRaces };
+  return { completedRaces, upcomingRaces, currentRace };
 };
 
 export const getOrdinal = (n: number) => {

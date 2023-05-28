@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
-import { Box, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Text, VStack } from "@chakra-ui/react";
 
-import ColorModeSwitcher from './components/color-mode-switcher';
-import Tabs from './components/tabs';
+import ColorModeSwitcher from "./components/color-mode-switcher";
+import Tabs from "./components/tabs";
 
 const App = () => {
   return (
