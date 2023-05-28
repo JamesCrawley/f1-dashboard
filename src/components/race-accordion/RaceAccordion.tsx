@@ -8,7 +8,6 @@ import {
   AccordionPanel,
   Box,
   Divider,
-  Heading,
   Stack,
   Text,
 } from "@chakra-ui/react";
