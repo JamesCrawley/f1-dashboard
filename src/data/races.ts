@@ -78,7 +78,7 @@ export const races: Race[] = [
     name: "FORMULA 1 GRAND PRIX DE MONACO 2023",
     trackName: "Circuit de Monaco",
     country: "Monaco",
-    status: "in-progress",
+    status: "completed",
     result: {
       pole: "Max Verstappen",
       first: "Max Verstappen",
