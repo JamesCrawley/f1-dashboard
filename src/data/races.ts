@@ -83,7 +83,7 @@ export const races: Race[] = [
       pole: "Max Verstappen",
       first: "Max Verstappen",
       last: "Kevin Magnussen",
-      fastestLap: "Lewis Hamilton"
+      fastestLap: "Lewis Hamilton",
     },
   },
   {
@@ -91,7 +91,13 @@ export const races: Race[] = [
     name: "FORMULA 1 AWS GRAN PREMIO DE ESPAÑA 2023",
     trackName: "Circuit de Barcelona-Catalunya",
     country: "Spain",
-    status: "upcoming",
+    status: "completed",
+    result: {
+      pole: "Max Verstappen",
+      first: "Max Verstappen",
+      last: "Logan Sargeant",
+      fastestLap: "Max Verstappen",
+    },
   },
   {
     id: 9,
