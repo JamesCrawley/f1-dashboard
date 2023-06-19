@@ -104,7 +104,13 @@ export const races: Race[] = [
     name: "FORMULA 1 PIRELLI GRAND PRIX DU CANADA 2023",
     trackName: "Circuit Gilles-Villeneuve",
     country: "Canada",
-    status: "upcoming",
+    status: "completed",
+    result: {
+      pole: "Max Verstappen",
+      first: "Max Verstappen",
+      last: "Nyck de Vries",
+      fastestLap: "Sergio Perez",
+    },
   },
   {
     id: 10,

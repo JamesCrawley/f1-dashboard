@@ -9,8 +9,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "update-predictions": "cd src/scripts && tsc convert.ts && node convert.js && prettier --write ../data/players.ts"
-
+    "spreadsheet": "cd src/scripts && tsc convert.ts && node convert.js && prettier --write ../data/players.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.1",
