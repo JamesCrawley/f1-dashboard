@@ -117,7 +117,7 @@ export const races: Race[] = [
     name: "FORMULA 1 GROSSER PREIS VON ÖSTERREICH 2023",
     trackName: "Red Bull Ring",
     country: "Austria",
-    status: "in-progress",
+    status: "completed",
     result: {
       pole: "Max Verstappen",
       first: "Max Verstappen",
