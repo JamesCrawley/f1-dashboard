@@ -121,7 +121,7 @@ export const races: Race[] = [
     result: {
       pole: "Max Verstappen",
       first: "Max Verstappen",
-      last: "Kevin Magnussen",
+      last: "Yuki Tsunoda",
       fastestLap: "Max Verstappen",
     },
   },
