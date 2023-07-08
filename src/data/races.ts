@@ -130,7 +130,10 @@ export const races: Race[] = [
     name: "FORMULA 1 ARAMCO BRITISH GRAND PRIX 2023",
     trackName: "Silverstone Circuit",
     country: "Great Britain",
-    status: "upcoming",
+    status: "in-progress",
+    results: {
+        pole: "Max Verstappen"
+    }
   },
   {
     id: 12,
