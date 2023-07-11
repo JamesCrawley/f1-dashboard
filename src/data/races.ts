@@ -131,9 +131,9 @@ export const races: Race[] = [
     trackName: "Silverstone Circuit",
     country: "Great Britain",
     status: "in-progress",
-    results: {
-        pole: "Max Verstappen"
-    }
+    result: {
+      pole: "Max Verstappen",
+    },
   },
   {
     id: 12,
