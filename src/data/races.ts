@@ -143,7 +143,13 @@ export const races: Race[] = [
     name: "FORMULA 1 QATAR AIRWAYS HUNGARIAN GRAND PRIX 2023",
     trackName: "Hungaroring",
     country: "Hungary",
-    status: "upcoming",
+    status: "completed",
+    result: {
+      pole: "Lewis Hamilton",
+      first: "Max Verstappen",
+      last: "Logan Sargeant",
+      fastestLap: "Max Verstappen",
+    },
   },
   {
     id: 13,
