@@ -86,6 +86,7 @@ const driverMapping: { [key: string]: Driver } = {
   Hulkenberg: "Nico Hulkenberg",
   Tsunoda: "Yuki Tsunoda",
   "De Vries": "Nyck de Vries",
+  Ricciardo: "Daniel Ricciardo",
   Albon: "Alex Albon",
   Sargeant: "Logan Sargeant",
 };
