@@ -60,18 +60,19 @@ export const splitRaces = (races: Race[]): SplitRaces => {
   let currentRace: Race | null = null;
 
   races.forEach((race) => {
-    const { result, status } = race;
+    const { status } = race;
 
     if (status === "in-progress") {
       currentRace = race;
       return;
     }
 
-    if (result?.first || status === "cancelled") {
-      completedRaces.push(race);
-    } else {
+    if (status === "upcoming") {
       upcomingRaces.push(race);
+      return;
     }
+
+    completedRaces.push(race);
   });
 
   return { completedRaces, upcomingRaces, currentRace };

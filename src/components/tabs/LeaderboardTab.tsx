@@ -14,17 +14,13 @@ import {
 } from "@chakra-ui/react";
 
 import { StoreContext } from "../../context/StoreContext";
-import { getOrdinal } from "../../scripts/utils";
 import Top3 from "./Top3";
+import { getOrdinal, splitRaces } from "@/scripts/utils";
 
 const LeaderboardTab = () => {
   const { races, players } = useContext(StoreContext);
 
-  const racesCompleted = races
-    .map(({ result, status }): number =>
-      result?.first || status === "cancelled" ? 1 : 0
-    )
-    .reduce((a, b) => a + b);
+  const { completedRaces } = splitRaces(races);
 
   const sortedPlayers = [...players];
 
@@ -40,7 +36,7 @@ const LeaderboardTab = () => {
         textAlign="center"
         mb="16px"
       >
-        Races Completed {racesCompleted} / {races.length}
+        Races Completed {completedRaces.length} / {races.length}
       </Text>
 
       <Top3 players={top3Players} />
