@@ -18,7 +18,7 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
     >
       <Text fontSize={{ base: "32px", lg: "20px" }}>{player.name}</Text>
 
-      <Text fontSize={{ base: "120px", lg: "80px" }} lineHeight="60px">
+      <Text fontSize="80px" lineHeight="60px">
         {player.points}
       </Text>
 
