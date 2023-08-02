@@ -7,7 +7,7 @@ import { Driver, Result } from "../../types";
 type RaceResultFieldProps = {
   text: "First" | "Last" | "Fastest Lap" | "Pole";
   emoji: "🏆" | "👎" | "⚡" | "🏅";
-  value?: Driver;
+  value?: Driver | null;
 };
 const RaceResultField: FC<RaceResultFieldProps> = ({ text, emoji, value }) => {
   const fontSize = { base: "36px", lg: "24px" };
