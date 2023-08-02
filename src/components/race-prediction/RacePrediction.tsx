@@ -14,8 +14,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { StoreContext } from "../../context/StoreContext";
-import { Driver, Race, Result } from "../../types";
+import { StoreContext } from "@/context/StoreContext";
+import { Race, Result } from "@/types";
 
 type RacePredictionProps = {
   race: Race;
