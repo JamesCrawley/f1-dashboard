@@ -15,7 +15,7 @@ import {
 import { StoreContext } from "../../context/StoreContext";
 import { Race } from "../../types";
 import RaceResults from "../race-results";
-import RacePrediction from "./RacePrediction";
+import RacePrediction from "../race-prediction";
 
 const fontSize = { base: "36px", lg: "24px" };
 const textProps = {
