@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import { Stack, Text } from '@chakra-ui/react';
+import { Stack, Text } from "@chakra-ui/react";
 
 import { getOrdinal } from '../../scripts/utils';
 

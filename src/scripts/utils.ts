@@ -46,7 +46,7 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
     };
   });
 
-  return { players };
+  return players;
 };
 
 type SplitRaces = {

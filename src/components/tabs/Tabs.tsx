@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
-import { Box, Tab, TabList, Tabs as ChakraTabs, Text } from '@chakra-ui/react';
+import { Box, Tab, TabList, Tabs as ChakraTabs, Text } from "@chakra-ui/react";
 
 import LeaderboardTab from './LeaderboardTab';
 import RacesTab from './RacesTab';

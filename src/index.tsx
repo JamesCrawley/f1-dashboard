@@ -15,11 +15,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const { players: p } = getPlayersWithPoints(players, races);
+const playersWithPoints = getPlayersWithPoints(players, races);
 
 root.render(
   <ChakraProvider theme={theme}>
-    <StoreContext.Provider value={{ players: p, races }}>
+    <StoreContext.Provider value={{ players: playersWithPoints, races }}>
       <BrowserRouter>
         <ColorModeScript />
         <App />
