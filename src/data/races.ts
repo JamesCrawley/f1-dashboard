@@ -169,7 +169,7 @@ export const races: Race[] = [
     name: "FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2023",
     trackName: "Circuit Zandvoort",
     country: "Netherlands",
-    status: "upcoming",
+    status: "in-progress",
   },
   {
     id: 15,
