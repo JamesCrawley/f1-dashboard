@@ -34,7 +34,7 @@ const RacesTab = () => {
   return (
     <Stack textAlign="center" gap="32px">
       {currentRace && (
-        <Box bgColor={bgColor} p="16px" borderRadius="8px">
+        <Box bgColor={bgColor} pb="16px" pt="0px" borderRadius="8px">
           <Title>
             🏎️ {`${currentRace.country} - ${currentRace.trackName}`} 🏎️
           </Title>
