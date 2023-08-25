@@ -45,7 +45,7 @@ const RaceResults: FC<RaceResultsProps> = ({ result }) => {
           value={result?.fastestLap}
         />
 
-        <RaceResultField text="Pole" emoji="🏅" value={result.pole} />
+        <RaceResultField text="Pole" emoji="🏅" value={result?.pole} />
       </SimpleGrid>
     </VStack>
   );
