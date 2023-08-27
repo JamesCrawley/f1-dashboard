@@ -51,7 +51,9 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
                 gap="16px"
               >
                 {!isCompact && (
-                  <Text fontSize={tableFontSize}>{prediction ?? "-"}</Text>
+                  <Text fontSize={tableFontSize}>
+                    {prediction ?? "No prediction"}
+                  </Text>
                 )}
 
                 {!!race.result?.first && (
