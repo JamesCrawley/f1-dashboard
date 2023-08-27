@@ -2,9 +2,9 @@ import { FC } from "react";
 
 import { Box, Flex, Stack } from "@chakra-ui/react";
 
-import { Player } from '../../types';
-import PlayerCard from '../player-card';
-import Podium from '../podium';
+import { Player } from "../../types";
+import PlayerCard from "../player-card";
+import Podium from "../podium";
 
 type Top3Props = {
   players: Player[];

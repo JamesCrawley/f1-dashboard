@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { Stack, Text } from "@chakra-ui/react";
 
-import { getOrdinal } from '../../scripts/utils';
+import { getOrdinal } from "../../scripts/utils";
 
 type PodiumProps = { position: number; bgColor: string };
 const Podium: FC<PodiumProps> = ({ position, bgColor }) => {

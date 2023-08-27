@@ -133,7 +133,7 @@ columns.forEach((column, playerNum) => {
 writeFile(
   "../data/players.ts",
   `
-  import { Player } from '../types';
+  import { Player } from "../types";
 
   export const players: Player[] = ${JSON.stringify(players)}  
   `,

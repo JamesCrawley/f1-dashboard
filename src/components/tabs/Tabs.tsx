@@ -3,8 +3,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { Box, Tab, TabList, Tabs as ChakraTabs, Text } from "@chakra-ui/react";
 
-import LeaderboardTab from './LeaderboardTab';
-import RacesTab from './RacesTab';
+import LeaderboardTab from "./LeaderboardTab";
+import RacesTab from "./RacesTab";
 
 const Tabs = () => {
   const navigate = useNavigate();

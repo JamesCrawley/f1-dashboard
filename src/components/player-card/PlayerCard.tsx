@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { Stack, StackProps, Text } from "@chakra-ui/react";
 
-import { Player } from '../../types';
+import { Player } from "../../types";
 
 type PlayerCardProps = { player: Player } & StackProps;
 const PlayerCard: FC<PlayerCardProps> = ({ player, ...props }) => {
