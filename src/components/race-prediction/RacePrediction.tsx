@@ -126,7 +126,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
               if (pointsGained === 20) pointsGained += 5;
 
               return (
-                <Td px={tdPx}>
+                <Td key={player.id} px={tdPx}>
                   <Text
                     fontSize={tableFontSize}
                     textAlign="center"
