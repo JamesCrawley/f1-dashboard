@@ -170,6 +170,9 @@ export const races: Race[] = [
     trackName: "Circuit Zandvoort",
     country: "Netherlands",
     status: "in-progress",
+    result: {
+      pole: "Max Verstappen",
+    },
   },
   {
     id: 15,
