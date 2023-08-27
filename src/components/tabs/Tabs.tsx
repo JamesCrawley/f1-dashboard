@@ -22,10 +22,6 @@ const Tabs = () => {
     },
   ];
 
-  useEffect(() => {
-    if (window.location.pathname === "/") navigate(tabs[0].path);
-  }, []);
-
   const [selectedTab, changeSelectedTab] = useState<number>(
     tabs.findIndex(({ path }) => path === window.location.pathname)
   );
@@ -35,6 +31,10 @@ const Tabs = () => {
 
     changeSelectedTab(index);
   };
+
+  useEffect(() => {
+    if (window.location.pathname === "/") onTabChange(0);
+  }, []);
 
   return (
     <Box>
