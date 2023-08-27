@@ -4,7 +4,7 @@ import { Player, Race, Result } from "../types";
 export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
   const { completedRaces } = splitRaces(r);
 
-  const players = [...p].map((player) => {
+  const players = p.map((player) => {
     let points = 0;
 
     completedRaces.forEach((race) => {
