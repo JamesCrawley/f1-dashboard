@@ -52,6 +52,7 @@ export type Driver =
   | "Yuki Tsunoda"
   | "Nyck de Vries"
   | "Daniel Ricciardo"
+  | "Liam Lawson"
   | "Alex Albon"
   | "Logan Sargeant";
 

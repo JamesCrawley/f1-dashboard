@@ -87,6 +87,7 @@ const driverMapping: { [key: string]: Driver } = {
   Tsunoda: "Yuki Tsunoda",
   "De Vries": "Nyck de Vries",
   Ricciardo: "Daniel Ricciardo",
+  Lawson: "Liam Lawson",
   Albon: "Alex Albon",
   Sargeant: "Logan Sargeant",
 };
