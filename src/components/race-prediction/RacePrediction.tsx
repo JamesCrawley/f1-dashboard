@@ -112,7 +112,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
 
             {players.map((player) => {
               const predictions = Object.entries(
-                player.predictions[race.id] as Result
+                (player.predictions[race.id] as Result) ?? {}
               );
 
               let pointsGained = 0;
