@@ -182,7 +182,13 @@ export const races: Race[] = [
     name: "FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2023",
     trackName: "Autodromo Nazionale Monza",
     country: "Italy",
-    status: "upcoming",
+    status: "completed",
+    result: {
+      pole: "Carlos Sainz",
+      first: "Max Verstappen",
+      last: "Kevin Magnussen",
+      fastestLap: "Oscar Piastri",
+    },
   },
   {
     id: 16,
