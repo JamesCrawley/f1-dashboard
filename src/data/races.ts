@@ -195,7 +195,7 @@ export const races: Race[] = [
     name: "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2023",
     trackName: "Marina Bay Street Circuit",
     country: "Singapore",
-    status: "upcoming",
+    status: "in-progress",
   },
   {
     id: 17,
