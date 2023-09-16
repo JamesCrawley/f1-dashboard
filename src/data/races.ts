@@ -196,6 +196,9 @@ export const races: Race[] = [
     trackName: "Marina Bay Street Circuit",
     country: "Singapore",
     status: "in-progress",
+    result: {
+      pole: "Carlos Sainz",
+    },
   },
   {
     id: 17,
