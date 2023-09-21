@@ -195,9 +195,12 @@ export const races: Race[] = [
     name: "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2023",
     trackName: "Marina Bay Street Circuit",
     country: "Singapore",
-    status: "in-progress",
+    status: "completed",
     result: {
       pole: "Carlos Sainz",
+      first: "Carlos Sainz",
+      last: "George Russell",
+      fastestLap: "Lewis Hamilton",
     },
   },
   {
