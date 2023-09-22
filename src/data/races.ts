@@ -208,7 +208,7 @@ export const races: Race[] = [
     name: "FORMULA 1 LENOVO JAPANESE GRAND PRIX 2023",
     trackName: "Suzuka Internarional Racing Course",
     country: "Japan",
-    status: "upcoming",
+    status: "in-progress",
   },
   {
     id: 18,
