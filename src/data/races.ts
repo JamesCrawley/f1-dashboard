@@ -209,6 +209,12 @@ export const races: Race[] = [
     trackName: "Suzuka Internarional Racing Course",
     country: "Japan",
     status: "in-progress",
+    result: {
+      pole: "Max Verstappen",
+      first: "Max Verstappen",
+      last: "Kevin Magnussen",
+      fastestLap: "Max Verstappen",
+    }
   },
   {
     id: 18,
