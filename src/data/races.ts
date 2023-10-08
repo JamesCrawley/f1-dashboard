@@ -224,6 +224,9 @@ export const races: Race[] = [
     status: "in-progress",
     result: {
       pole: "Max Verstappen",
+      first: "Max Verstappen",
+      last: "Liam Lawson",
+      fastestLap: "Max Verstappen",
     },
   },
   {
