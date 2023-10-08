@@ -221,7 +221,7 @@ export const races: Race[] = [
     name: "FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2023",
     trackName: "Lusail International Circuit",
     country: "Qatar",
-    status: "in-progress",
+    status: "completed",
     result: {
       pole: "Max Verstappen",
       first: "Max Verstappen",
