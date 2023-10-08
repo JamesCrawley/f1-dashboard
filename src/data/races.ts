@@ -214,14 +214,17 @@ export const races: Race[] = [
       first: "Max Verstappen",
       last: "Kevin Magnussen",
       fastestLap: "Max Verstappen",
-    }
+    },
   },
   {
     id: 18,
     name: "FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2023",
     trackName: "Lusail International Circuit",
     country: "Qatar",
-    status: "upcoming",
+    status: "in-progress",
+    result: {
+      pole: "Max Verstappen",
+    },
   },
   {
     id: 19,
