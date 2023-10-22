@@ -237,6 +237,9 @@ export const races: Race[] = [
     status: "in-progress",
     result: {
       pole: "Charles Leclerc",
+      first: "Max Verstappen",
+      last: "Daniel Ricciardo",
+      fastestLap: "Yuki Tsunoda",
     },
   },
   {
