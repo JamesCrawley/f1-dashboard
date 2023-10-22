@@ -234,7 +234,10 @@ export const races: Race[] = [
     name: "FORMULA 1 LENOVO UNITED STATES GRAND PRIX 2023",
     trackName: "Circuit of The Americas",
     country: "United States",
-    status: "upcoming",
+    status: "in-progress",
+    result: {
+      pole: "Charles Leclerc",
+    },
   },
   {
     id: 20,
