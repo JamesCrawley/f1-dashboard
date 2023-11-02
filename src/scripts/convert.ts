@@ -114,7 +114,8 @@ columns.forEach((column, playerNum) => {
         break;
       }
 
-      racePrediction[predictionKeys[predictionCount]] = driverMapping[value];
+      racePrediction[predictionKeys[predictionCount]] =
+        driverMapping[value.trim()];
     }
 
     if (racePrediction !== null) {
