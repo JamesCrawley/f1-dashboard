@@ -247,7 +247,13 @@ export const races: Race[] = [
     name: "FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2023",
     trackName: "Autódromo Hermanos Rodríguez",
     country: "Mexico",
-    status: "upcoming",
+    status: "completed",
+    result: {
+      pole: "Charles Leclerc",
+      first: "Max Verstappen",
+      last: "Lance Stroll",
+      fastestLap: "Lewis Hamilton",
+    },
   },
   {
     id: 21,
