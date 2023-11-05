@@ -260,7 +260,10 @@ export const races: Race[] = [
     name: "FORMULA 1 ROLEX GRANDE PRÊMIO DE SÃO PAULO 2023",
     trackName: "Autódromo José Carlos Pace",
     country: "Brazil",
-    status: "upcoming",
+    status: "in-progress",
+    result: {
+      pole: "Max Verstappen",
+    },
   },
   {
     id: 22,
