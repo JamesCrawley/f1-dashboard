@@ -260,9 +260,12 @@ export const races: Race[] = [
     name: "FORMULA 1 ROLEX GRANDE PRÊMIO DE SÃO PAULO 2023",
     trackName: "Autódromo José Carlos Pace",
     country: "Brazil",
-    status: "in-progress",
+    status: "completed",
     result: {
       pole: "Max Verstappen",
+      first: "Max Verstappen",
+      last: "Oscar Piastri",
+      fastestLap: "Lando Norris",
     },
   },
   {
