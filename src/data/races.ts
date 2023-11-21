@@ -273,7 +273,13 @@ export const races: Race[] = [
     name: "FORMULA 1 HEINEKEN SILVER LAS VEGAS GRAND PRIX 2023",
     trackName: "Las Vegas",
     country: "United States",
-    status: "upcoming",
+    status: "completed",
+    result: {
+      pole: "Charles Leclerc",
+      first: "Max Verstappen",
+      last: "Nico Hulkenberg",
+      fastestLap: "Oscar Piastri"
+    }
   },
   {
     id: 23,
