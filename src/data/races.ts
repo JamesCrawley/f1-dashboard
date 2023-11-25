@@ -286,6 +286,9 @@ export const races: Race[] = [
     name: "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2023",
     trackName: "Yas Marina Circuit",
     country: "Abu Dhabi",
-    status: "upcoming",
+    status: "in-progress",
+    result: {
+      pole: "Max Verstappen"
+    }
   },
 ];
