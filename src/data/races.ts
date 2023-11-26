@@ -288,7 +288,10 @@ export const races: Race[] = [
     country: "Abu Dhabi",
     status: "in-progress",
     result: {
-      pole: "Max Verstappen"
+      pole: "Max Verstappen",
+      first: "Max Verstappen",
+      last: "Kevin Magnussen",
+      fastestLap: "Max Verstappen"
     }
   },
 ];
