@@ -2,10 +2,18 @@ import { Player, Race, Result } from "../types";
 
 // TODO: Rename this
 export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
-  const { completedRaces } = splitRaces(r);
+  const { completedRaces, currentRace } = splitRaces(r);
 
   const players = p.map((player) => {
     let points = 0;
+
+    const { predictions } = player;
+
+    if(currentRace?.result?.pole) {
+      if(predictions[currentRace.id].pole === currentRace.result.pole) {
+        points += 5
+      }
+    }
 
     completedRaces.forEach((race) => {
       if (race.status === "cancelled" || player.predictions[race.id] === null) {
@@ -14,7 +22,7 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
 
       let pointsToAdd = 0;
 
-      const { predictions } = player;
+      
 
       if (predictions[race.id]?.pole === (race.result as Result).pole) {
         pointsToAdd += 5;
