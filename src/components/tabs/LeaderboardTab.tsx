@@ -13,12 +13,23 @@ import {
   Tr,
 } from "@chakra-ui/react";
 
+import { FaStar, FaRegStar } from "react-icons/fa";
+
 import { StoreContext } from "../../context/StoreContext";
 import Top3 from "./Top3";
 import { getOrdinal, splitRaces } from "../../utils";
+import { colors } from "../../constants";
+import { useSettingsStore } from "../../store/useSettingsStore";
 
 const LeaderboardTab: FC = () => {
   const { races, players } = useContext(StoreContext);
+
+  const { favouritePlayerIds, toggleFavouritePlayer } = useSettingsStore(
+    ({ favouritePlayerIds, toggleFavouritePlayer }) => ({
+      favouritePlayerIds,
+      toggleFavouritePlayer,
+    })
+  );
 
   const { completedRaces } = splitRaces(races);
 
@@ -42,16 +53,21 @@ const LeaderboardTab: FC = () => {
       <Top3 players={top3Players} />
 
       <Divider />
+
       <TableContainer>
         <Table variant="striped" size={{ base: "lg", lg: "md" }}>
           <Thead>
             <Tr>
+              <Th w="0px"></Th>
+
               <Th w="0px">
                 <Text fontSize={{ base: "24px", lg: "16px" }}>#</Text>
               </Th>
+
               <Th>
                 <Text fontSize={{ base: "24px", lg: "16px" }}>Name</Text>
               </Th>
+
               <Th w="0px">
                 <Text fontSize={{ base: "24px", lg: "16px" }}>Points</Text>
               </Th>
@@ -60,19 +76,36 @@ const LeaderboardTab: FC = () => {
 
           <Tbody>
             {sortedPlayers.map((player, i) => {
+              const isFavourite = favouritePlayerIds.includes(player.id);
+
               return (
                 <Tr key={player.id}>
+                  <Td pr="0px !important">
+                    <Text
+                      cursor="pointer"
+                      color={colors.gold}
+                      fontSize={{ base: "48px", lg: "32px" }}
+                      onClick={() => {
+                        toggleFavouritePlayer(player.id);
+                      }}
+                    >
+                      {isFavourite ? <FaStar /> : <FaRegStar />}
+                    </Text>
+                  </Td>
+
                   <Td>
                     <Text fontSize={{ base: "24px", lg: "16px" }}>
                       {i + 4}
                       {getOrdinal(i + 4)}
                     </Text>
                   </Td>
+
                   <Td>
                     <Text fontSize={{ base: "24px", lg: "16px" }}>
                       {player.name}
                     </Text>
                   </Td>
+
                   <Td>
                     <Text
                       textAlign="end"
