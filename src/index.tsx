@@ -22,6 +22,7 @@ root.render(
     <StoreContext.Provider value={{ players: playersWithPoints, races }}>
       <BrowserRouter>
         <ColorModeScript />
+
         <App />
       </BrowserRouter>
     </StoreContext.Provider>
