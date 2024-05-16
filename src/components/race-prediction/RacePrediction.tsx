@@ -1,7 +1,8 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 
 import {
   Flex,
+  HStack,
   Switch,
   Table,
   TableContainer,
@@ -16,12 +17,20 @@ import {
 
 import { StoreContext } from "../../context/StoreContext";
 import { Race, Result } from "../../types";
+import { useSettingsStore } from "../../store/useSettingsStore";
+import { FavouritePlayer } from "../favourite-player";
 
 type RacePredictionProps = {
   race: Race;
 };
 const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
-  const [isCompact, setIsCompact] = useState<boolean>(false);
+  const { isCompact, favouritePlayers, toggleIsCompact } = useSettingsStore(
+    ({ isCompact, favouritePlayers, toggleIsCompact }) => ({
+      isCompact,
+      favouritePlayers,
+      toggleIsCompact,
+    })
+  );
   const { players } = useContext(StoreContext);
 
   const tableFontSize = { base: "32px", lg: "16px" };
@@ -67,6 +76,10 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
     );
   };
 
+  const sortedPlayers = [...players].sort((a, b) => {
+    return favouritePlayers.includes(a.id) ? -1 : 1;
+  });
+
   return (
     <TableContainer>
       <Table
@@ -83,15 +96,19 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
                 <Switch
                   size="md"
                   isChecked={isCompact}
-                  onChange={(e) => setIsCompact(e.target.checked)}
+                  onChange={toggleIsCompact}
                 />
               </Flex>
             </Th>
 
-            {players.map((player) => {
+            {sortedPlayers.map((player) => {
               return (
                 <Th key={player.id} px={tdPx}>
-                  <Text fontSize={tableFontSize}>{player.name}</Text>
+                  <HStack>
+                    <Text fontSize={tableFontSize}>{player.name}</Text>
+
+                    <FavouritePlayer size="sm" playerId={player.id} />
+                  </HStack>
                 </Th>
               );
             })}
@@ -112,7 +129,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
               <Text fontSize={tableFontSize}>Points Gained</Text>
             </Td>
 
-            {players.map((player) => {
+            {sortedPlayers.map((player) => {
               const predictions = Object.entries(
                 (player.predictions[race.id] as Result) ?? {}
               );

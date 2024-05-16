@@ -1,6 +1,6 @@
 import { Player, Race, Result } from "../types";
+import { splitRaces } from ".";
 
-// TODO: Rename this
 export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
   const { completedRaces, currentRace } = splitRaces(r);
 
@@ -9,9 +9,9 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
 
     const { predictions } = player;
 
-    if(currentRace?.result?.pole) {
-      if(predictions[currentRace.id].pole === currentRace.result.pole) {
-        points += 5
+    if (currentRace?.result?.pole) {
+      if (predictions[currentRace.id].pole === currentRace.result.pole) {
+        points += 5;
       }
     }
 
@@ -21,8 +21,6 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
       }
 
       let pointsToAdd = 0;
-
-      
 
       if (predictions[race.id]?.pole === (race.result as Result).pole) {
         pointsToAdd += 5;
@@ -55,47 +53,4 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
   });
 
   return players;
-};
-
-type SplitRaces = {
-  completedRaces: Race[];
-  upcomingRaces: Race[];
-  currentRace: Race | null;
-};
-export const splitRaces = (races: Race[]): SplitRaces => {
-  const completedRaces: Race[] = [];
-  const upcomingRaces: Race[] = [];
-  let currentRace: Race | null = null;
-
-  races.forEach((race) => {
-    const { status } = race;
-
-    if (status === "in-progress") {
-      currentRace = race;
-      return;
-    }
-
-    if (status === "upcoming") {
-      upcomingRaces.push(race);
-      return;
-    }
-
-    completedRaces.push(race);
-  });
-
-  return { completedRaces, upcomingRaces, currentRace };
-};
-
-export const getOrdinal = (n: number) => {
-  let ord = "th";
-
-  if (n % 10 === 1 && n % 100 !== 11) {
-    ord = "st";
-  } else if (n % 10 === 2 && n % 100 !== 12) {
-    ord = "nd";
-  } else if (n % 10 === 3 && n % 100 !== 13) {
-    ord = "rd";
-  }
-
-  return ord;
 };
