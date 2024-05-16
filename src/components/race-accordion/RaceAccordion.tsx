@@ -16,6 +16,7 @@ import { StoreContext } from "../../context/StoreContext";
 import { Race } from "../../types";
 import RaceResults from "../race-results";
 import RacePrediction from "../race-prediction";
+import { useSettingsStore } from "../../store/useSettingsStore";
 
 const fontSize = { base: "36px", lg: "24px" };
 const textProps = {
@@ -23,12 +24,16 @@ const textProps = {
   mb: "16px",
 };
 
-type AccordionHeaderProps = Pick<Race, "name">;
-const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
+type AccordionHeaderProps = {
+  name: Race["name"];
+  onClick: () => void;
+};
+const AccordionHeader: FC<AccordionHeaderProps> = ({ name, onClick }) => {
   return (
     <AccordionButton
       py={{ base: "16px", lg: "8px" }}
       _expanded={{ fontWeight: "bold" }}
+      onClick={onClick}
     >
       <Text flex="1" fontSize={fontSize} textAlign="left">
         {name}
@@ -41,17 +46,25 @@ const AccordionHeader: FC<AccordionHeaderProps> = ({ name }) => {
 
 type RaceAccordionProps = {
   races: Race[];
-  defaultIndex?: number;
 };
-const RaceAccordion: FC<RaceAccordionProps> = ({ races, defaultIndex }) => {
+const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
   const { players } = useContext(StoreContext);
+  const { expandedRaces, toggleExpandedRace } = useSettingsStore(
+    ({ expandedRaces, toggleExpandedRace }) => ({
+      expandedRaces,
+      toggleExpandedRace,
+    })
+  );
 
   return (
-    <Accordion allowToggle defaultIndex={defaultIndex}>
-      {races.map((race) => {
+    <Accordion allowMultiple index={expandedRaces}>
+      {races.map((race, index) => {
         return (
           <AccordionItem key={race.id}>
-            <AccordionHeader name={`${race.country} - ${race.trackName}`} />
+            <AccordionHeader
+              name={`${race.country} - ${race.trackName}`}
+              onClick={() => toggleExpandedRace(index)}
+            />
 
             <AccordionPanel textAlign="left" py="16px">
               <Stack gap="32px" textAlign="center">

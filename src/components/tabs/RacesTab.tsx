@@ -41,10 +41,7 @@ const RacesTab = () => {
         <Box>
           <Title>Completed Races 🏁</Title>
 
-          <RaceAccordion
-            races={completedRaces}
-            defaultIndex={currentRace ? undefined : completedRaces.length - 1}
-          />
+          <RaceAccordion races={completedRaces} />
         </Box>
       )}
 

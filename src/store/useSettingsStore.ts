@@ -3,9 +3,9 @@ import { persist, PersistOptions } from "zustand/middleware";
 import { Player, Race } from "../types";
 
 type SettingsState = {
-  expandedRaceIds: ReadonlyArray<Race["id"]>;
+  expandedRaces: Array<number>;
   isCompact: boolean;
-  favouritePlayerIds: ReadonlyArray<Player["id"]>;
+  favouritePlayers: Array<Player["id"]>;
   toggleIsCompact: () => void;
   toggleFavouritePlayer: (playerId: Player["id"]) => void;
   toggleExpandedRace: (raceId: Race["id"]) => void;
@@ -19,27 +19,27 @@ export const useSettingsStore = create<SettingsState>()(
   (persist as MyPersist)(
     (set, get) => ({
       isCompact: false,
-      expandedRaceIds: [],
-      favouritePlayerIds: [],
+      expandedRaces: [],
+      favouritePlayers: [],
       toggleIsCompact: () => {
         return set({ isCompact: !get().isCompact });
       },
       toggleFavouritePlayer: (playerId) => {
-        const { favouritePlayerIds } = get();
+        const { favouritePlayers } = get();
 
         return set({
-          favouritePlayerIds: favouritePlayerIds.includes(playerId)
-            ? favouritePlayerIds.filter((id) => id !== playerId)
-            : [...favouritePlayerIds, playerId],
+          favouritePlayers: favouritePlayers.includes(playerId)
+            ? favouritePlayers.filter((id) => id !== playerId)
+            : [...favouritePlayers, playerId],
         });
       },
       toggleExpandedRace: (raceId) => {
-        const { expandedRaceIds } = get();
+        const { expandedRaces } = get();
 
         return set({
-          expandedRaceIds: expandedRaceIds.includes(raceId)
-            ? expandedRaceIds.filter((id) => id !== raceId)
-            : [...expandedRaceIds, raceId],
+          expandedRaces: expandedRaces.includes(raceId)
+            ? expandedRaces.filter((id) => id !== raceId)
+            : [...expandedRaces, raceId],
         });
       },
     }),

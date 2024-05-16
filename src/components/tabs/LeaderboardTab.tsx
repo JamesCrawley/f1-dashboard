@@ -24,9 +24,9 @@ import { useSettingsStore } from "../../store/useSettingsStore";
 const LeaderboardTab: FC = () => {
   const { races, players } = useContext(StoreContext);
 
-  const { favouritePlayerIds, toggleFavouritePlayer } = useSettingsStore(
-    ({ favouritePlayerIds, toggleFavouritePlayer }) => ({
-      favouritePlayerIds,
+  const { favouritePlayers, toggleFavouritePlayer } = useSettingsStore(
+    ({ favouritePlayers, toggleFavouritePlayer }) => ({
+      favouritePlayers,
       toggleFavouritePlayer,
     })
   );
@@ -76,7 +76,7 @@ const LeaderboardTab: FC = () => {
 
           <Tbody>
             {sortedPlayers.map((player, i) => {
-              const isFavourite = favouritePlayerIds.includes(player.id);
+              const isFavourite = favouritePlayers.includes(player.id);
 
               return (
                 <Tr key={player.id}>

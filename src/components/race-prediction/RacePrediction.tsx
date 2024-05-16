@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 
 import {
   Flex,
@@ -16,12 +16,18 @@ import {
 
 import { StoreContext } from "../../context/StoreContext";
 import { Race, Result } from "../../types";
+import { useSettingsStore } from "../../store/useSettingsStore";
 
 type RacePredictionProps = {
   race: Race;
 };
 const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
-  const [isCompact, setIsCompact] = useState<boolean>(false);
+  const { isCompact, toggleIsCompact } = useSettingsStore(
+    ({ isCompact, toggleIsCompact }) => ({
+      isCompact,
+      toggleIsCompact,
+    })
+  );
   const { players } = useContext(StoreContext);
 
   const tableFontSize = { base: "32px", lg: "16px" };
@@ -83,7 +89,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
                 <Switch
                   size="md"
                   isChecked={isCompact}
-                  onChange={(e) => setIsCompact(e.target.checked)}
+                  onChange={toggleIsCompact}
                 />
               </Flex>
             </Th>
