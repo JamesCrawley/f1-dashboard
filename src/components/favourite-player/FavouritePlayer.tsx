@@ -1,5 +1,5 @@
 import { Text } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, ReactNode, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { colors } from "../../constants";
 import { useSettingsStore } from "../../store/useSettingsStore";
@@ -13,6 +13,8 @@ export const FavouritePlayer: FC<FavouritePlayerProps> = ({
   playerId,
   size = "md",
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const { favouritePlayers, toggleFavouritePlayer } = useSettingsStore(
     ({ favouritePlayers, toggleFavouritePlayer }) => ({
       favouritePlayers,
@@ -25,6 +27,8 @@ export const FavouritePlayer: FC<FavouritePlayerProps> = ({
   return (
     <Text
       cursor="pointer"
+      onMouseOver={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       color={colors.gold}
       fontSize={
         size === "md"
@@ -35,7 +39,7 @@ export const FavouritePlayer: FC<FavouritePlayerProps> = ({
         toggleFavouritePlayer(playerId);
       }}
     >
-      {isFavourite ? <FaStar /> : <FaRegStar />}
+      {isFavourite || isHovered ? <FaStar /> : <FaRegStar />}
     </Text>
   );
 };
