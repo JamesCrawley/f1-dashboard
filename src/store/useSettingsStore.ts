@@ -32,9 +32,7 @@ export const useSettingsStore = create<SettingsState>()(
       expandedRaces: [],
       favouritePlayers: [],
 
-      toggleIsCompact: () => {
-        set({ isCompact: !get().isCompact });
-      },
+      toggleIsCompact: () => set({ isCompact: !get().isCompact }),
 
       toggleFavouritePlayer: (playerId) => {
         const { favouritePlayers } = get();
