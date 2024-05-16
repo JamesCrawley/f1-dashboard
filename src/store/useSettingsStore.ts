@@ -31,9 +31,9 @@ export const useSettingsStore = create<SettingsState>()(
       isCompact: false,
       expandedRaces: [],
       favouritePlayers: [],
-      toggleIsCompact: () => {
-        set({ isCompact: !get().isCompact });
-      },
+
+      toggleIsCompact: () => set({ isCompact: !get().isCompact }),
+
       toggleFavouritePlayer: (playerId) => {
         const { favouritePlayers } = get();
 
@@ -54,6 +54,7 @@ export const useSettingsStore = create<SettingsState>()(
           toastOptions
         );
       },
+
       toggleExpandedRace: (raceId) => {
         const { expandedRaces } = get();
 

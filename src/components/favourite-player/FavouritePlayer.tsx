@@ -1,5 +1,5 @@
 import { Text } from "@chakra-ui/react";
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { colors } from "../../constants";
 import { useSettingsStore } from "../../store/useSettingsStore";
