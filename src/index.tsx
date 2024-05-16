@@ -8,7 +8,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import App from "./App";
 import { StoreContext } from "./context/StoreContext";
 import { players, races } from "./data";
-import { getPlayersWithPoints } from "./scripts/utils";
+import { getPlayersWithPoints } from "./utils";
 import theme from "./theme";
 
 const root = ReactDOM.createRoot(

@@ -9,9 +9,9 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
 
     const { predictions } = player;
 
-    if(currentRace?.result?.pole) {
-      if(predictions[currentRace.id].pole === currentRace.result.pole) {
-        points += 5
+    if (currentRace?.result?.pole) {
+      if (predictions[currentRace.id].pole === currentRace.result.pole) {
+        points += 5;
       }
     }
 
@@ -21,8 +21,6 @@ export const getPlayersWithPoints = (p: Player[], r: Race[]) => {
       }
 
       let pointsToAdd = 0;
-
-      
 
       if (predictions[race.id]?.pole === (race.result as Result).pole) {
         pointsToAdd += 5;

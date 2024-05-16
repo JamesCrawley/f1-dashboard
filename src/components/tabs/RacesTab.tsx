@@ -1,14 +1,8 @@
 import { FC, PropsWithChildren, useContext } from "react";
-import {
-  Box,
-  Stack,
-  Text,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 
 import { StoreContext } from "../../context/StoreContext";
-import { splitRaces } from "../../scripts/utils";
+import { splitRaces } from "../../utils";
 import { Result } from "../../types";
 import RaceAccordion from "../race-accordion";
 import RaceResults from "../race-results";
