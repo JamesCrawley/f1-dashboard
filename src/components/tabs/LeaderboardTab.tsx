@@ -17,7 +17,7 @@ import { StoreContext } from "../../context/StoreContext";
 import Top3 from "./Top3";
 import { getOrdinal, splitRaces } from "../../utils";
 
-const LeaderboardTab = () => {
+const LeaderboardTab: FC = () => {
   const { races, players } = useContext(StoreContext);
 
   const { completedRaces } = splitRaces(races);
