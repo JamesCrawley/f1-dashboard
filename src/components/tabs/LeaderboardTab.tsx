@@ -13,23 +13,14 @@ import {
   Tr,
 } from "@chakra-ui/react";
 
-import { FaStar, FaRegStar } from "react-icons/fa";
-
 import { StoreContext } from "../../context/StoreContext";
 import Top3 from "./Top3";
 import { getOrdinal, splitRaces } from "../../utils";
-import { colors } from "../../constants";
-import { useSettingsStore } from "../../store/useSettingsStore";
+
+import { FavouritePlayer } from "../favourite-player";
 
 const LeaderboardTab: FC = () => {
   const { races, players } = useContext(StoreContext);
-
-  const { favouritePlayers, toggleFavouritePlayer } = useSettingsStore(
-    ({ favouritePlayers, toggleFavouritePlayer }) => ({
-      favouritePlayers,
-      toggleFavouritePlayer,
-    })
-  );
 
   const { completedRaces } = splitRaces(races);
 
@@ -76,21 +67,10 @@ const LeaderboardTab: FC = () => {
 
           <Tbody>
             {sortedPlayers.map((player, i) => {
-              const isFavourite = favouritePlayers.includes(player.id);
-
               return (
                 <Tr key={player.id}>
                   <Td pr="0px !important">
-                    <Text
-                      cursor="pointer"
-                      color={colors.gold}
-                      fontSize={{ base: "48px", lg: "32px" }}
-                      onClick={() => {
-                        toggleFavouritePlayer(player.id);
-                      }}
-                    >
-                      {isFavourite ? <FaStar /> : <FaRegStar />}
-                    </Text>
+                    <FavouritePlayer playerId={player.id} />
                   </Td>
 
                   <Td>
