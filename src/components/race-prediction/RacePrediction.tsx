@@ -33,6 +33,10 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
   );
   const { players } = useContext(StoreContext);
 
+  const sortedPlayers = [...players].sort((a, b) => {
+    return favouritePlayers.includes(a.id) ? -1 : 1;
+  });
+
   const tableFontSize = { base: "32px", lg: "16px" };
   const tdPx = isCompact ? "8px !important" : "initial";
   const textColor = useColorModeValue("black", "white");
@@ -49,7 +53,7 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
           <Text fontSize={tableFontSize}>{label}</Text>
         </Td>
 
-        {players.map((player) => {
+        {sortedPlayers.map((player) => {
           const prediction = player.predictions[race.id]?.[resultType];
           const emoji = prediction === race.result?.[resultType] ? "✅" : "❌";
 
@@ -75,10 +79,6 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
       </Tr>
     );
   };
-
-  const sortedPlayers = [...players].sort((a, b) => {
-    return favouritePlayers.includes(a.id) ? -1 : 1;
-  });
 
   return (
     <TableContainer>
