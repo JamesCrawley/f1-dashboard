@@ -33,6 +33,8 @@
     "react-icons": "^3.11.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
     "typescript": "^4.9.5",
     "vercel": "^28.17.0",
     "xlsx": "^0.18.5",
