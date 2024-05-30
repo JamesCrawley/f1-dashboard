@@ -12,14 +12,22 @@ describe("useSettingsStore", () => {
   });
 
   describe("toggleIsCompact", () => {
-    it("works as expected", () => {
+    it("correctly sets the compact toggle from off -> on", () => {
       const { result } = renderHook(() => useSettingsStore());
-
-      expect(result.current.isCompact).toStrictEqual(false);
 
       act(() => result.current.toggleIsCompact());
 
       expect(result.current.isCompact).toStrictEqual(true);
+    });
+
+    it("correctly sets the compact toggle from on -> off", () => {
+      const { result } = renderHook(() => useSettingsStore());
+
+      result.current.isCompact = true;
+
+      act(() => result.current.toggleIsCompact());
+
+      expect(result.current.isCompact).toStrictEqual(false);
     });
   });
 
@@ -37,7 +45,7 @@ describe("useSettingsStore", () => {
     it("correctly removes a player as favourite", () => {
       const { result } = renderHook(() => useSettingsStore());
 
-      result.current.favouritePlayers = [1, 5, 7];
+      result.current.favouritePlayers = [5, 1, 7];
 
       act(() => result.current.toggleFavouritePlayer(1));
 
