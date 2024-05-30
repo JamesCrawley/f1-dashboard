@@ -6,8 +6,8 @@ describe("useSettingsStore", () => {
   it("should have initial values", () => {
     const { result } = renderHook(() => useSettingsStore());
 
-    expect(result.current.expandedRaces).toStrictEqual(false);
-    expect(result.current.isCompact).toStrictEqual([]);
+    expect(result.current.isCompact).toStrictEqual(false);
+    expect(result.current.expandedRaces).toStrictEqual([]);
     expect(result.current.favouritePlayers).toStrictEqual([]);
   });
 
