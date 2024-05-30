@@ -1,7 +1,11 @@
 import { Toast, toast } from "react-hot-toast";
 import { create, StateCreator } from "zustand";
-import { persist, PersistOptions } from "zustand/middleware";
-import { players } from "../data";
+import {
+  persist,
+  PersistOptions,
+  subscribeWithSelector,
+} from "zustand/middleware";
+
 import { Player, Race } from "../types";
 
 const toastOptions: Partial<Toast> = {
@@ -26,47 +30,52 @@ type MyPersist = (
   options: PersistOptions<SettingsState>
 ) => StateCreator<SettingsState>;
 export const useSettingsStore = create<SettingsState>()(
-  (persist as MyPersist)(
-    (set, get) => ({
-      isCompact: false,
-      expandedRaces: [],
-      favouritePlayers: [],
+  subscribeWithSelector(
+    (persist as MyPersist)(
+      (set, get) => ({
+        isCompact: false,
+        expandedRaces: [],
+        favouritePlayers: [],
 
-      toggleIsCompact: () => set({ isCompact: !get().isCompact }),
+        toggleIsCompact: () => set({ isCompact: !get().isCompact }),
 
-      toggleFavouritePlayer: (playerId) => {
-        const { favouritePlayers } = get();
+        toggleFavouritePlayer: (playerId) => {
+          const { favouritePlayers } = get();
 
-        const alreadyFavourited = favouritePlayers.includes(playerId);
+          const alreadyFavourited = favouritePlayers.includes(playerId);
 
-        set({
-          favouritePlayers: alreadyFavourited
-            ? favouritePlayers.filter((id) => id !== playerId)
-            : [...favouritePlayers, playerId],
-        });
+          set({
+            favouritePlayers: alreadyFavourited
+              ? favouritePlayers.filter((id) => id !== playerId)
+              : [...favouritePlayers, playerId],
+          });
+        },
 
-        const { name } = players.find(({ id }) => id === playerId) ?? {};
+        toggleExpandedRace: (raceId) => {
+          const { expandedRaces } = get();
 
-        toast.success(
-          `${name} has been ${
-            alreadyFavourited ? "removed from" : "added to"
-          } your favourites`,
-          toastOptions
-        );
-      },
+          set({
+            expandedRaces: expandedRaces.includes(raceId)
+              ? expandedRaces.filter((id) => id !== raceId)
+              : [...expandedRaces, raceId],
+          });
+        },
+      }),
 
-      toggleExpandedRace: (raceId) => {
-        const { expandedRaces } = get();
-
-        set({
-          expandedRaces: expandedRaces.includes(raceId)
-            ? expandedRaces.filter((id) => id !== raceId)
-            : [...expandedRaces, raceId],
-        });
-      },
-    }),
-    {
-      name: "settings-store",
-    }
+      {
+        name: "settings-store",
+      }
+    )
   )
+);
+
+useSettingsStore.subscribe(
+  (state) => state.favouritePlayers,
+  (newState, prevState) => {
+    if (newState.length > prevState.length) {
+      toast.success("Player added to favourites", toastOptions);
+    } else {
+      toast.success("Player removed from favourites", toastOptions);
+    }
+  }
 );
