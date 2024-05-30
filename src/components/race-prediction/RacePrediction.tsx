@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 
 import {
   Flex,
@@ -15,10 +15,10 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { StoreContext } from "../../context/StoreContext";
 import { Race, Result } from "../../types";
 import { useSettingsStore } from "../../store/useSettingsStore";
 import { FavouritePlayer } from "../favourite-player";
+import { players } from "../../data";
 
 type RacePredictionProps = {
   race: Race;
@@ -31,7 +31,6 @@ const RacePrediction: FC<RacePredictionProps> = ({ race }) => {
       toggleIsCompact,
     })
   );
-  const { players } = useContext(StoreContext);
 
   const sortedPlayers = [...players].sort((a, b) => {
     return favouritePlayers.includes(a.id) ? -1 : 1;

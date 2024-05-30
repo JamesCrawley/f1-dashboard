@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 
 import {
   Box,
@@ -13,15 +13,13 @@ import {
   Tr,
 } from "@chakra-ui/react";
 
-import { StoreContext } from "../../context/StoreContext";
 import Top3 from "./Top3";
 import { getOrdinal, splitRaces } from "../../utils";
 
 import { FavouritePlayer } from "../favourite-player";
+import { players, races } from "../../data";
 
 const LeaderboardTab: FC = () => {
-  const { races, players } = useContext(StoreContext);
-
   const { completedRaces } = splitRaces(races);
 
   const sortedPlayers = [...players];

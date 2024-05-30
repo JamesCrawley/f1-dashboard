@@ -1,11 +1,11 @@
-import { FC, PropsWithChildren, useContext } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Box, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 
-import { StoreContext } from "../../context/StoreContext";
 import { splitRaces } from "../../utils";
 import { Result } from "../../types";
 import RaceAccordion from "../race-accordion";
 import RaceResults from "../race-results";
+import { races } from "../../data";
 
 const Title: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -19,8 +19,6 @@ const Title: FC<PropsWithChildren> = ({ children }) => {
 };
 
 const RacesTab = () => {
-  const { races } = useContext(StoreContext);
-
   const { completedRaces, upcomingRaces, currentRace } = splitRaces(races);
 
   const bgColor = useColorModeValue("green.200", "green.400");

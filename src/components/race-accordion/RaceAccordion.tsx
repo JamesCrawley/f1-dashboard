@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 
 import {
   Accordion,
@@ -12,11 +12,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { StoreContext } from "../../context/StoreContext";
 import { Race } from "../../types";
 import RaceResults from "../race-results";
 import RacePrediction from "../race-prediction";
 import { useSettingsStore } from "../../store/useSettingsStore";
+import { players } from "../../data";
 
 const fontSize = { base: "36px", lg: "24px" };
 const textProps = {
@@ -48,7 +48,6 @@ type RaceAccordionProps = {
   races: Race[];
 };
 const RaceAccordion: FC<RaceAccordionProps> = ({ races }) => {
-  const { players } = useContext(StoreContext);
   const { expandedRaces, toggleExpandedRace } = useSettingsStore(
     ({ expandedRaces, toggleExpandedRace }) => ({
       expandedRaces,
