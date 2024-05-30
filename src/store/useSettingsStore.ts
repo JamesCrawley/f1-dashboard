@@ -7,8 +7,8 @@ import { Player, Race } from "../types";
 const toastOptions: Partial<Toast> = {
   position: "top-right",
   style: {
-    borderRadius: "10px",
-    border: "1px solid #333",
+    borderRadius: "8px",
+    padding: "16px",
   },
 };
 
